@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Si vous utilisez ce code ou ces résultats, merci de citer l'article."
+title: "Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde au Sahel camerounais"
+authors:
+  - family-names: "Kazoune Bouba"
+    given-names: "Israel"
+  - family-names: "Maïrousgou"
+    given-names: "Céline"
+  - family-names: "Kolaye Guilsou"
+    given-names: "Gabriel"
+date-released: 2026-11-11
+license: MIT

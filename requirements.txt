@@ -1,0 +1,13 @@
+pandas>=2.0
+numpy
+scipy
+openpyxl
+xlrd>=2.0.1
+matplotlib
+statsmodels
+prophet
+xgboost
+shapely
+adjustText
+geopandas<1.0   # fournit les limites des pays (Natural Earth) pour les cartes de situation
+requests

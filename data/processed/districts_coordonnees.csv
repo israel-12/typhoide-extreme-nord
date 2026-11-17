@@ -1,0 +1,33 @@
+district,nom_dhis2,latitude,longitude,type_geometrie,verifie
+Bogo,District Bogo,10.8181,14.627,Polygon,oui
+Bourha,District Bourha,10.2441,13.5844,Polygon,oui
+Fotokol,District Fotokol,12.4719,14.2611,Polygon,oui
+Gazawa,District Gazawa,10.4113,14.0803,MultiPolygon,oui
+Goulfey,District Goulfey,12.4146,14.765,Polygon,oui
+Guere,District Guere,10.0489,15.4129,Polygon,oui
+Guidiguis,District Guidiguis,10.0811,14.74,Polygon,oui
+Hina,District Hina,10.4067,13.8375,Polygon,oui
+Kaele,District Kaele,10.1601,14.4427,MultiPolygon,oui
+Kar Hay,District Kar Hay,10.0415,14.9958,Polygon,oui
+Kolofata,District Kolofata,11.1203,13.9893,MultiPolygon,oui
+Kousseri,District Kousseri,11.5976,14.9601,Polygon,oui
+Koza,District Koza,10.8759,13.9051,Polygon,oui
+Mada,District Mada,12.8282,14.3476,Polygon,oui
+Maga,District Maga,10.9813,14.9367,Polygon,oui
+Makary,District Makary,12.4881,14.5235,Polygon,oui
+Maroua 1,District Maroua 1,10.5147,14.2252,MultiPolygon,oui
+Maroua 2,District Maroua 2,10.7853,14.3401,MultiPolygon,oui
+Maroua 3,District Maroua 3,10.5689,14.5425,Polygon,oui
+Meri,District Meri,10.7147,14.1801,Polygon,oui
+Mindif,District Mindif,10.4013,14.4401,MultiPolygon,oui
+Mogode,District Mogode,10.5757,13.685,MultiPolygon,oui
+Mokolo,District Mokolo,10.7435,13.7816,Polygon,oui
+Mora,District Mora,11.3803,14.6413,Polygon,oui
+Moulvoudaye,District Moulvoudaye,10.4543,14.798,MultiPolygon,oui
+Moutourwa,District Moutourwa,10.2607,14.1544,MultiPolygon,oui
+Mozogo,District Mozogo,11.0131,13.8745,MultiPolygon,oui
+Pette,District Pette,10.9613,14.5586,Polygon,oui
+Roua,District Roua,10.7527,13.9621,Polygon,oui
+Tokombere,District Tokombere,10.8895,14.1595,Polygon,oui
+Vele,District Vele,10.5915,15.0143,Polygon,oui
+Yagoua,District Yagoua,10.1887,15.145,Polygon,oui

@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\def\figlang{fr}
+\input{preambule}
+\ifPDFTeX\usepackage[french]{babel}\else\usepackage{polyglossia}\setmainlanguage{french}\fi
+\fancyhead[L]{\sffamily\footnotesize\color{navy} Pluie et fièvre typhoïde au Sahel camerounais}
+\fancyhead[R]{\sffamily\footnotesize\color{navy} Matériel supplémentaire S1}
+\fancyfoot[C]{\sffamily\footnotesize\thepage}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}\renewcommand{\theequation}{S\arabic{equation}}
+\begin{document}\sloppy
+\thispagestyle{fancy}
+\noindent{\sffamily\footnotesize\color{ora}\textbf{MATÉRIEL SUPPLÉMENTAIRE S1}}\par\vspace{2pt}
+\noindent{\color{navy}\rule{\linewidth}{1.2pt}}\par\vspace{8pt}
+{\raggedright\sffamily\bfseries\LARGE\color{navy}Matériel supplémentaire S1\par}\vspace{4pt}
+{\raggedright\sffamily\large\color{navy}Formulation mathématique complète\par}\vspace{10pt}
+\noindent Ce document rassemble les formules de l'article « Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde au Sahel camerounais ». Les équations sont numérotées avec le préfixe S. Les tableaux, figures et références sont présentés dans l'article principal ; les numéros entre crochets renvoient à sa liste de références.
+\section{Prétraitement des données}
+
+
+\subsection{Extraction et agrégation}
+Soit $x_{f,k,t}$ le nombre de cas déclarés par la formation sanitaire $f$, dans la catégorie d'âge et de sexe $k$, la semaine $t$. Les 522 formations ont été rattachées à leur district $d$ grâce à la hiérarchie des unités d'organisation, et les cas agrégés :
+\begin{equation}
+y_{d,t}=\sum_{f\in d}\;\sum_{k} x_{f,k,t}, \qquad Y_t=\sum_{d=1}^{32} y_{d,t}.
+\label{eq:agg}
+\end{equation}
+Une semaine-district est considérée comme manquante lorsqu'aucune formation du district n'a déclaré de valeur.
+
+\subsection{Contrôle de qualité et harmonisation}
+L'export a été comparé à une extraction antérieure portant sur 2019-2023 : les totaux régionaux hebdomadaires coïncident (écart médian de 0\,\%), les rares écarts correspondant à des corrections tardives. Cinq districts créés récemment (Gawar, Kaï-Kaï, Mokong, Tourou, Waza) ont été ramenés à leur district d'origine. Les deux formations aujourd'hui rattachées à Waza ont été réintégrées dans Mora : la somme Mora + Waza reproduit la série historique de Mora pour 250 semaines sur 261. Le nombre $N_t$ de formations déclarantes a été calculé pour chaque semaine.
+
+\subsection{Données manquantes}
+La structure des données manquantes a été examinée par district et par année. Les semaines manquantes ont été imputées par interpolation linéaire au sein de chaque district : pour une semaine manquante $t$ encadrée par les semaines observées $t_1<t<t_2$,
+\begin{equation}
+\hat{y}_{d,t}=y_{d,t_1}+\frac{t-t_1}{t_2-t_1}\left(y_{d,t_2}-y_{d,t_1}\right),
+\label{eq:interp}
+\end{equation}
+puis arrondie à l'entier. Les semaines imputées ont servi à construire les variables explicatives, mais jamais de valeur de référence pour l'évaluation des prévisions par district.
+
+\subsection{Valeurs aberrantes}
+Les valeurs aberrantes ont été recherchées par le filtre de Hampel [12] : une observation est signalée lorsqu'elle s'écarte de la médiane mobile $\tilde{m}_{d,t}$ (fenêtre de 9 semaines) de plus de trois fois l'écart absolu médian normalisé,
+\begin{equation}
+\left|y_{d,t}-\tilde{m}_{d,t}\right|>3\times1{,}4826\times\operatorname{méd}_{|j|\le4}\left|y_{d,t+j}-\tilde{m}_{d,t}\right|.
+\label{eq:hampel}
+\end{equation}
+Les valeurs signalées n'ont pas été corrigées : en l'absence d'information externe permettant de distinguer une erreur de saisie d'une flambée réelle, nous avons préféré les conserver, la MAE et les modèles à base d'arbres étant peu sensibles aux valeurs isolées.
+
+\subsection{Alignement des données climatiques}
+Les valeurs quotidiennes ont été agrégées en semaines du lundi au dimanche, alignées sur les semaines épidémiologiques. Pour la pluie, le cumul hebdomadaire est $P_{d,t}=\sum_{j\in t}p_{d,j}$ ; pour la température et l'humidité, la moyenne. Les séries régionales sont la moyenne des 32 districts.
+
+\subsection{Relation moyenne-variance et transformation}
+La relation entre la moyenne $\mu_d$ et la variance $\sigma^2_d$ des cas des districts a été estimée par la loi de puissance de Taylor [13] :
+\begin{equation}
+\log\sigma^2_d=\log a+b\,\log\mu_d .
+\label{eq:taylor}
+\end{equation}
+Une valeur $b>1$ indique une surdispersion croissante avec le niveau des cas, ce qui justifie une transformation logarithmique $u_{d,t}=\ln(1+y_{d,t})$ lorsque des districts de tailles très différentes sont modélisés ensemble.
+
+\section{Analyse exploratoire des séries}
+\subsection{Décomposition}
+La série régionale a été décomposée par la méthode STL [14] (décomposition saisonnière par régression locale, période de 52 semaines, version robuste) en une tendance $T_t$, une composante saisonnière $S_t$ et un résidu $R_t$ :
+\begin{equation}
+Y_t=T_t+S_t+R_t .
+\label{eq:stl}
+\end{equation}
+La force de la tendance et celle de la saisonnalité ont été mesurées par [23] :
+\begin{equation}
+F_T=\max\!\left(0,\,1-\frac{\operatorname{Var}(R_t)}{\operatorname{Var}(T_t+R_t)}\right),\qquad F_S=\max\!\left(0,\,1-\frac{\operatorname{Var}(R_t)}{\operatorname{Var}(S_t+R_t)}\right).
+\label{eq:force}
+\end{equation}
+
+\subsection{Indices saisonniers}
+Pour quantifier la saisonnalité à l'échelle du mois, les cas ont été rapportés à leur moyenne mobile centrée sur 52 semaines, puis moyennés par mois $m$ et normalisés à une moyenne de 1, selon une démarche proche de celle de Shashvat et al. [7] :
+\begin{equation}
+\tilde{Y}_t=\frac{Y_t}{\frac{1}{52}\sum_{j=-26}^{25}Y_{t+j}},\qquad I_m=\frac{\overline{\tilde{Y}}_{m}}{\frac{1}{12}\sum_{m'=1}^{12}\overline{\tilde{Y}}_{m'}} .
+\label{eq:indice}
+\end{equation}
+Un indice $I_m>1$ signale un mois au-dessus de la tendance.
+
+\subsection{Stationnarité}
+La stationnarité a été évaluée par deux tests aux hypothèses nulles opposées. Le test de Dickey-Fuller augmenté (ADF) [15] estime la régression
+\begin{equation}
+\Delta Y_t=\alpha+\gamma\,Y_{t-1}+\sum_{i=1}^{p}\delta_i\,\Delta Y_{t-i}+\varepsilon_t ,
+\label{eq:adf}
+\end{equation}
+et teste $H_0:\gamma=0$ (racine unitaire, non-stationnarité). Le test KPSS [16] décompose la série en une marche aléatoire et un terme stationnaire, et teste $H_0$ : stationnarité, à l'aide de la statistique
+\begin{equation}
+\eta=\frac{1}{n^{2}\,\hat{\sigma}^{2}_{\infty}}\sum_{t=1}^{n}\Big(\sum_{s=1}^{t}\hat{e}_s\Big)^{2},
+\label{eq:kpss}
+\end{equation}
+où $\hat{e}_s$ sont les résidus de la régression sur une constante et $\hat{\sigma}^{2}_{\infty}$ la variance de long terme. Une série est jugée stationnaire lorsque l'ADF rejette $H_0$ et que le KPSS ne la rejette pas. Les tests ont été appliqués à la série en niveau, en logarithme, en différence première et en différence saisonnière, ainsi qu'à chaque district.
+
+\subsection{Autocorrélation}
+Les fonctions d'autocorrélation (ACF) et d'autocorrélation partielle (PACF) ont été examinées jusqu'à 60 et 30 semaines. L'absence d'autocorrélation (des données ou des résidus d'un modèle) a été testée par la statistique de Ljung-Box [17] :
+\begin{equation}
+Q(m)=n(n+2)\sum_{k=1}^{m}\frac{\hat{\rho}_k^{2}}{n-k}\;\sim\;\chi^{2}_{m} .
+\label{eq:lb}
+\end{equation}
+
+\section{Cadre mathématique}
+\subsection{Point de départ : un modèle de transmission à réservoir environnemental}
+Nous partons du modèle de Tilahun et al. [5], repris par Sabir et al. [6]. La population est divisée en sensibles $S$, porteurs asymptomatiques $C$, malades $I$ et guéris $R$ ; $B$ est la concentration de bactéries dans l'eau et les aliments :
+\begin{equation}
+\begin{aligned}
+\frac{dS}{dt}&=\Lambda-(\lambda+\mu)S+\delta R, &\qquad \frac{dC}{dt}&=\rho\lambda S-(\phi+\theta+\mu+\sigma_1)C,\\
+\frac{dI}{dt}&=(1-\rho)\lambda S+\theta C-(\alpha+\sigma_2+\mu+\beta)I, & \frac{dR}{dt}&=\phi C+\beta I-(\mu+\delta)R,\\
+\frac{dB}{dt}&=\sigma_1 C+\sigma_2 I-\mu_b B .
+\end{aligned}
+\label{eq:seir}
+\end{equation}
+$\Lambda$ est le recrutement, $\mu$ la mortalité naturelle, $\rho$ la proportion des infections qui deviennent des portages, $\theta$ le passage du portage à la maladie, $\phi$ et $\beta$ les taux de guérison, $\delta$ la perte d'immunité, $\alpha$ la mortalité due à la maladie, $\sigma_1$ et $\sigma_2$ l'excrétion de bactéries et $\mu_b$ leur disparition. La force d'infection est saturante :
+\begin{equation}
+\lambda(t)=\frac{\nu\,B(t)}{K+B(t)} ,
+\label{eq:lambda}
+\end{equation}
+où $\nu$ est le taux de contact maximal avec l'eau ou les aliments contaminés et $K$ la concentration de demi-saturation.
+
+\subsection{Introduction de la pluie}
+Le modèle~\eqref{eq:seir} ne contient pas de climat. Nous faisons l'hypothèse de travail que la pluie $P(t)$ augmente la contamination de l'environnement, par ruissellement et contamination des puits et des points d'eau, avec une intensité $\kappa\ge0$ :
+\begin{equation}
+\frac{dB}{dt}=\sigma_1 C+\sigma_2 I+\kappa P(t)-\mu_b B,
+\qquad
+B(t)=\int_0^{\infty}e^{-\mu_b s}\big[\sigma_1C(t-s)+\sigma_2I(t-s)+\kappa P(t-s)\big]\,ds .
+\label{eq:pluie}
+\end{equation}
+La concentration en bactéries intègre ainsi toute la pluie passée, avec une mémoire de durée moyenne $1/\mu_b$.
+
+\subsection{Des infections aux cas déclarés}
+Une infection ne devient un cas déclaré qu'après l'incubation (environ 6 à 30 jours [6]), la consultation et la déclaration. Avec $g(s)$ la distribution de ce délai total et $\pi_t$ la proportion des cas captés par la surveillance, qui croît avec le nombre $N_t$ de formations déclarantes :
+\begin{equation}
+\mathbb{E}[y_t]=\pi_t\int_0^{\infty}g(s)\big[(1-\rho)\lambda(t-s)S(t-s)+\theta C(t-s)\big]\,ds,\qquad \pi_t=\pi(N_t),\;\pi'(N)>0 .
+\label{eq:obs}
+\end{equation}
+
+\subsection{Prédictions qualitatives}
+Les équations~\eqref{eq:lambda} à~\eqref{eq:obs} conduisent à trois prédictions. (i) \textit{Un décalage entre pluie et cas} : la pluie agit à travers la mémoire du réservoir ($1/\mu_b$) puis le délai $g$, si bien que le pic des cas suit celui des pluies de plusieurs semaines. (ii) \textit{Un effet saturant} : la sensibilité $\partial\lambda/\partial B=\nu K/(K+B)^2$ tend vers zéro quand $B\gg K$, de sorte qu'un surplus de pluie peut ne plus accroître le risque pendant la saison des pluies. (iii) \textit{Des tendances liées à la surveillance} : une hausse de $\pi_t$ accroît les cas déclarés sans changement de l'incidence réelle. Les paramètres ($\nu$, $K$, $\kappa$, $\mu_b$, $g$) ne sont pas connus localement et $S$, $C$, $B$ ne sont pas observés : le modèle n'est donc pas ajusté, mais sert à dériver les hypothèses testées statistiquement.
+
+\section{Formulation du problème de prévision et hypothèses}\label{sec:hyp}
+Soit $\mathcal{F}_t$ l'information disponible à la fin de la semaine $t$. La précision étant mesurée par l'erreur absolue, la prévision optimale à $h$ semaines est la médiane conditionnelle :
+\begin{equation}
+f_h^{*}=\arg\min_f\;\mathbb{E}\big|y_{t+h}-f(\mathcal{F}_t)\big|=\operatorname{méd}\big(y_{t+h}\mid\mathcal{F}_t\big).
+\label{eq:objectif}
+\end{equation}
+Avec $\tilde{Y}_t$ défini en~\eqref{eq:indice}, $P^{(4)}_t=\sum_{j=0}^{3}P_{t-j}$ le cumul de pluie sur 4 semaines et $A_t=P^{(4)}_t-\overline{P^{(4)}}_{w(t)}$ son anomalie par rapport à la même semaine calendaire $w(t)$, les hypothèses s'écrivent :
+\begin{align}
+\textbf{H1 :}&\quad r(\ell)=\operatorname{corr}\big(\tilde{Y}_t,P^{(4)}_{t-\ell}\big)>0,\ \text{maximale pour un décalage }\ell^{*}>0 ; \label{eq:h1}\\
+\textbf{H2 :}&\quad \operatorname{corr}\big(\tilde{Y}_t,A_{t-\ell^{*}}\big)>0 ; \label{eq:h2}\\
+\textbf{H3 :}&\quad \mathbb{E}\big|y_{t+h}-\hat{f}_h(\mathcal{F}_t,\mathbf{z}_t)\big|<\mathbb{E}\big|y_{t+h}-\hat{f}_h(\mathcal{F}_t)\big| ; \label{eq:h3}\\
+\textbf{H4 :}&\quad \mathbb{E}\big|e^{\text{global}}_{d,t+h}\big|<\mathbb{E}\big|e^{\text{naïf}}_{d,t+h}\big|\ \text{et}\ \mathbb{E}\big|e^{\text{global}}_{d,t+h}\big|<\mathbb{E}\big|e^{\text{local}}_{d,t+h}\big| , \label{eq:h4}
+\end{align}
+où $\mathbf{z}_t$ désigne les variables climatiques observées jusqu'à la semaine $t$. Si la médiane conditionnelle de $y_{t+h}$ ne change pas lorsqu'on ajoute $\mathbf{z}_t$, toute l'information utile du climat est déjà contenue dans $\mathcal{F}_t$ et H3 est rejetée.
+
+\section{Modèles de prévision}
+\textbf{Références naïves.}
+\begin{equation}
+\hat{y}^{\,\text{naïf}}_{t+h|t}=y_t,\qquad \hat{y}^{\,\text{saison}}_{t+h|t}=y_{t+h-52}.
+\label{eq:naif}
+\end{equation}
+\textbf{ARIMA} [18]. Avec $L$ l'opérateur de retard et $\varepsilon_t$ un bruit blanc,
+\begin{equation}
+\Big(1-\sum_{i=1}^{p}\phi_iL^{i}\Big)(1-L)^{d}\,y_t=c+\Big(1+\sum_{j=1}^{q}\theta_jL^{j}\Big)\varepsilon_t .
+\label{eq:arima}
+\end{equation}
+L'ordre $d$ a été choisi par le test KPSS, $p$ et $q$ (0 à 3) par le critère d'Akaike sur la période d'entraînement initiale, puis figés.
+
+\textbf{Prophet} [19]. Tendance linéaire par morceaux $g(t)$ et saisonnalité annuelle de Fourier d'ordre 10, de période $P=52{,}18$ semaines :
+\begin{equation}
+y(t)=g(t)+\sum_{k=1}^{10}\Big[a_k\cos\frac{2\pi kt}{P}+b_k\sin\frac{2\pi kt}{P}\Big]+\varepsilon_t .
+\label{eq:prophet}
+\end{equation}
+\textbf{XGBoost} [20]. La prévision est la somme de $M$ arbres de régression construits séquentiellement ; chaque arbre minimise une perte quadratique pénalisée par sa complexité ($T$ feuilles de valeurs $w$) :
+\begin{equation}
+\hat{y}=\sum_{m=1}^{M}f_m(\mathbf{x}),\qquad \mathcal{L}=\sum_i(y_i-\hat{y}_i)^2+\sum_{m=1}^{M}\Big(\gamma T_m+\tfrac{1}{2}\lambda_r\lVert w_m\rVert^2\Big).
+\label{eq:xgb}
+\end{equation}
+Compte tenu de la non-stationnarité en niveau (voir l'article principal), nous avons retenu une stratégie directe qui prédit la \textit{variation} de la série, avec un modèle $F_h$ par horizon :
+\begin{equation}
+\hat{y}_{t+h|t}=y_t+F_h(\mathbf{x}_t),\qquad \mathbf{x}_t=\Big(y_t,\dots,y_{t-3},\ \bar{y}^{(4)}_t,\ \bar{y}^{(13)}_t,\ \sin\tfrac{2\pi w_{t+h}}{52},\ \cos\tfrac{2\pi w_{t+h}}{52},\ y_{t+h-52}\Big).
+\label{eq:direct}
+\end{equation}
+Le modèle \textbf{XGBoost + climat} complète $\mathbf{x}_t$ par $\mathbf{z}_t=\big(P^{(4)}_t,\,P^{(4)}_{t-4},\,\bar{T}^{(4)}_t,\,\bar{H}^{(4)}_t\big)$, toutes observées à la date de prévision.
+
+\textbf{Modèles local et global.} Le modèle local ajuste une fonction $F_{h,d}$ par district. Le modèle global ajuste une seule fonction $F_h$ sur les 32 districts, en échelle logarithmique, avec le niveau moyen passé du district $\bar{u}_{d,t}$ :
+\begin{equation}
+u_{d,t+h}-u_{d,t}=F_h\big(\mathbf{x}_{d,t},\bar{u}_{d,t}\big)+\varepsilon_{d,t+h},\qquad \hat{y}_{d,t+h|t}=\exp\big(u_{d,t}+\hat{F}_h\big)-1 .
+\label{eq:global}
+\end{equation}
+Les hyperparamètres ont été fixés a priori et jamais ajustés sur la période test.
+
+
+
+\section{Protocole d'évaluation}
+Les prévisions ont été évaluées hors échantillon par origine glissante, avec fenêtre d'entraînement croissante [23]. La période test couvre 2023-2025 (156 semaines), choisie parce que le réseau de surveillance y est stable. Pour chaque semaine $t$ de cette période, chaque modèle est réentraîné sur les seules semaines $1,\dots,t$, puis prévoit les cas à $h=1$ et $h=4$ semaines. Avec $e_{t+h}=y_{t+h}-\hat{y}_{t+h|t}$ :
+\begin{equation}
+\text{MAE}=\frac{1}{n}\sum|e_{t+h}|,\quad \text{RMSE}=\sqrt{\frac{1}{n}\sum e_{t+h}^2},\quad \text{MAPE}=\frac{100}{n}\sum\frac{|e_{t+h}|}{y_{t+h}},\quad \text{MAE}^{\text{rel}}_d=\frac{\text{MAE}^{\text{modèle}}_d}{\text{MAE}^{\text{naïf}}_d}.
+\label{eq:metrics}
+\end{equation}
+La MAE est le critère principal, car elle est moins sensible aux valeurs extrêmes que la RMSE [24].
+
+\section{Tests statistiques}
+Pour comparer deux modèles A et B, on calcule $d_t=|e^{A}_t|-|e^{B}_t|$, sa moyenne $\bar{d}$ et ses autocovariances $\gamma_k$. La statistique de Diebold-Mariano [25], corrigée pour les petits échantillons selon Harvey, Leybourne et Newbold [26], est comparée à une loi de Student à $n-1$ degrés de liberté :
+\begin{equation}
+\mathrm{DM}=\frac{\bar{d}}{\sqrt{\frac{1}{n}\big(\gamma_0+2\sum_{k=1}^{h-1}\gamma_k\big)}},\qquad \mathrm{DM}^{*}=\mathrm{DM}\sqrt{\frac{n+1-2h+h(h-1)/n}{n}}\;\sim\;t_{n-1}.
+\label{eq:dm}
+\end{equation}
+Pour l'ensemble des districts, l'écart d'erreur est normalisé par la MAE naïve de chaque district puis moyenné chaque semaine sur les $D_t$ districts observés ; le test~\eqref{eq:dm} est appliqué à cette série :
+\begin{equation}
+\tilde{d}_t=\frac{1}{D_t}\sum_{d}\frac{|e^{A}_{d,t}|-|e^{B}_{d,t}|}{\text{MAE}^{\text{naïf}}_d}.
+\label{eq:panel}
+\end{equation}
+Les corrélations~\eqref{eq:h1} et~\eqref{eq:h2} sont des corrélations de Pearson ; les associations entre caractéristiques des districts ont été testées par corrélation de Spearman. Le seuil de significativité est de 5\,\%.
+
+
+\end{document}

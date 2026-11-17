@@ -1,0 +1,9 @@
+horizon,comparaison,semaines,ecart_moyen_normalise,stat_DM,p_valeur
+1,XGBoost global vs Naïf,156,-0.131,-13.883,0.0
+1,XGBoost global vs ARIMA,156,-0.023,-3.355,0.001
+1,XGBoost global vs XGBoost local,156,-0.111,-12.816,0.0
+1,XGBoost global vs Naïf saisonnier,156,-0.748,-27.968,0.0
+4,XGBoost global vs Naïf,153,-0.153,-8.293,0.0
+4,XGBoost global vs ARIMA,153,-0.051,-2.882,0.0045
+4,XGBoost global vs XGBoost local,153,-0.147,-6.768,0.0
+4,XGBoost global vs Naïf saisonnier,153,-0.536,-11.234,0.0

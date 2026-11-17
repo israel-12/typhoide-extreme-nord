@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+article/latex/*.aux
+article/latex/*.log
+article/latex/*.out
+article/latex/*.synctex.gz
+.DS_Store

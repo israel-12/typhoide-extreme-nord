@@ -1,0 +1,20 @@
+PROJET OVERLEAF — Influence de la pluviométrie sur la dynamique et la prévision
+de la fièvre typhoïde au Sahel camerounais
+
+1. Sur Overleaf : New Project > Upload Project > choisir ce fichier .zip.
+2. Menu (en haut à gauche) > Settings > Compiler : XeLaTeX (recommandé, polices TeX Gyre).
+   pdfLaTeX fonctionne aussi.
+
+3. Main document : main.tex (article en français).
+
+Fichiers :
+- main.tex ............... article principal en français
+- article_en.tex ......... article principal en anglais
+- S1_formules_fr.tex ..... matériel supplémentaire S1 (formules), français
+- S1_formulas_en.tex ..... supplementary material S1 (formulas), English
+- preambule.tex .......... mise en page commune (polices, couleurs, titres)
+- annexe_fr.tex / annexe_en.tex ... tableau des résultats par district
+- figures/ ............... toutes les images (préfixe fr_ ou en_)
+
+Pour compiler une autre version, choisir le fichier voulu dans
+Menu > Settings > Main document.

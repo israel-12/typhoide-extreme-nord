@@ -1,0 +1,257 @@
+horizon,district,comparaison,n,stat_DM,p_valeur
+1,Bogo,XGBoost global vs Naïf,156,-4.632,0.0
+1,Bourha,XGBoost global vs Naïf,156,-5.124,0.0
+1,Fotokol,XGBoost global vs Naïf,134,-1.675,0.0962
+1,Gazawa,XGBoost global vs Naïf,156,-4.954,0.0
+1,Goulfey,XGBoost global vs Naïf,156,-4.12,0.0001
+1,Guere,XGBoost global vs Naïf,156,-2.683,0.0081
+1,Guidiguis,XGBoost global vs Naïf,156,-4.207,0.0
+1,Hina,XGBoost global vs Naïf,156,-1.202,0.2312
+1,Kaele,XGBoost global vs Naïf,156,-4.368,0.0
+1,Kar Hay,XGBoost global vs Naïf,156,-0.727,0.4682
+1,Kolofata,XGBoost global vs Naïf,126,-0.481,0.631
+1,Kousseri,XGBoost global vs Naïf,156,0.059,0.9533
+1,Koza,XGBoost global vs Naïf,156,-2.038,0.0432
+1,Mada,XGBoost global vs Naïf,156,-2.456,0.0152
+1,Maga,XGBoost global vs Naïf,156,-3.088,0.0024
+1,Makary,XGBoost global vs Naïf,156,-3.671,0.0003
+1,Maroua 1,XGBoost global vs Naïf,156,-2.387,0.0182
+1,Maroua 2,XGBoost global vs Naïf,156,-2.615,0.0098
+1,Maroua 3,XGBoost global vs Naïf,156,-3.766,0.0002
+1,Meri,XGBoost global vs Naïf,156,-2.388,0.0182
+1,Mindif,XGBoost global vs Naïf,156,-2.215,0.0282
+1,Mogode,XGBoost global vs Naïf,156,-3.091,0.0024
+1,Mokolo,XGBoost global vs Naïf,156,-4.782,0.0
+1,Mora,XGBoost global vs Naïf,156,-2.204,0.029
+1,Moulvoudaye,XGBoost global vs Naïf,156,-2.319,0.0217
+1,Moutourwa,XGBoost global vs Naïf,156,-3.233,0.0015
+1,Mozogo,XGBoost global vs Naïf,156,-2.433,0.0161
+1,Pette,XGBoost global vs Naïf,156,-3.451,0.0007
+1,Roua,XGBoost global vs Naïf,156,-2.99,0.0032
+1,Tokombere,XGBoost global vs Naïf,156,-3.214,0.0016
+1,Vele,XGBoost global vs Naïf,156,-2.865,0.0048
+1,Yagoua,XGBoost global vs Naïf,156,-3.003,0.0031
+1,Bogo,XGBoost global vs ARIMA,156,0.676,0.5
+1,Bourha,XGBoost global vs ARIMA,156,1.057,0.292
+1,Fotokol,XGBoost global vs ARIMA,134,0.42,0.6753
+1,Gazawa,XGBoost global vs ARIMA,156,-1.782,0.0767
+1,Goulfey,XGBoost global vs ARIMA,156,-3.628,0.0004
+1,Guere,XGBoost global vs ARIMA,156,0.13,0.8971
+1,Guidiguis,XGBoost global vs ARIMA,156,1.091,0.2768
+1,Hina,XGBoost global vs ARIMA,156,-0.086,0.9313
+1,Kaele,XGBoost global vs ARIMA,156,-2.299,0.0228
+1,Kar Hay,XGBoost global vs ARIMA,156,0.379,0.7051
+1,Kolofata,XGBoost global vs ARIMA,126,-3.187,0.0018
+1,Kousseri,XGBoost global vs ARIMA,156,2.456,0.0152
+1,Koza,XGBoost global vs ARIMA,156,-1.179,0.2403
+1,Mada,XGBoost global vs ARIMA,156,0.901,0.3691
+1,Maga,XGBoost global vs ARIMA,156,-0.842,0.4011
+1,Makary,XGBoost global vs ARIMA,156,0.168,0.8668
+1,Maroua 1,XGBoost global vs ARIMA,156,-2.35,0.02
+1,Maroua 2,XGBoost global vs ARIMA,156,-1.211,0.2278
+1,Maroua 3,XGBoost global vs ARIMA,156,1.181,0.2393
+1,Meri,XGBoost global vs ARIMA,156,0.279,0.7803
+1,Mindif,XGBoost global vs ARIMA,156,-0.687,0.493
+1,Mogode,XGBoost global vs ARIMA,156,-2.478,0.0143
+1,Mokolo,XGBoost global vs ARIMA,156,-1.403,0.1626
+1,Mora,XGBoost global vs ARIMA,156,0.516,0.6067
+1,Moulvoudaye,XGBoost global vs ARIMA,156,-1.969,0.0507
+1,Moutourwa,XGBoost global vs ARIMA,156,-1.842,0.0673
+1,Mozogo,XGBoost global vs ARIMA,156,-1.94,0.0541
+1,Pette,XGBoost global vs ARIMA,156,0.187,0.852
+1,Roua,XGBoost global vs ARIMA,156,-0.82,0.4136
+1,Tokombere,XGBoost global vs ARIMA,156,-0.437,0.6631
+1,Vele,XGBoost global vs ARIMA,156,-0.639,0.5239
+1,Yagoua,XGBoost global vs ARIMA,156,1.123,0.2633
+1,Bogo,XGBoost global vs XGBoost local,156,-2.432,0.0162
+1,Bourha,XGBoost global vs XGBoost local,156,-2.058,0.0413
+1,Fotokol,XGBoost global vs XGBoost local,134,-3.307,0.0012
+1,Gazawa,XGBoost global vs XGBoost local,156,-4.451,0.0
+1,Goulfey,XGBoost global vs XGBoost local,156,-1.863,0.0644
+1,Guere,XGBoost global vs XGBoost local,156,-2.963,0.0035
+1,Guidiguis,XGBoost global vs XGBoost local,156,-1.009,0.3147
+1,Hina,XGBoost global vs XGBoost local,156,-3.888,0.0001
+1,Kaele,XGBoost global vs XGBoost local,156,-1.974,0.0501
+1,Kar Hay,XGBoost global vs XGBoost local,156,0.577,0.5648
+1,Kolofata,XGBoost global vs XGBoost local,126,-0.883,0.3791
+1,Kousseri,XGBoost global vs XGBoost local,156,-0.508,0.6125
+1,Koza,XGBoost global vs XGBoost local,156,-2.212,0.0285
+1,Mada,XGBoost global vs XGBoost local,156,-1.164,0.2464
+1,Maga,XGBoost global vs XGBoost local,156,-4.145,0.0001
+1,Makary,XGBoost global vs XGBoost local,156,-2.023,0.0448
+1,Maroua 1,XGBoost global vs XGBoost local,156,-3.623,0.0004
+1,Maroua 2,XGBoost global vs XGBoost local,156,-2.969,0.0035
+1,Maroua 3,XGBoost global vs XGBoost local,156,-2.682,0.0081
+1,Meri,XGBoost global vs XGBoost local,156,-1.278,0.2031
+1,Mindif,XGBoost global vs XGBoost local,156,-2.953,0.0036
+1,Mogode,XGBoost global vs XGBoost local,156,-2.695,0.0078
+1,Mokolo,XGBoost global vs XGBoost local,156,-2.023,0.0448
+1,Mora,XGBoost global vs XGBoost local,156,-1.228,0.2211
+1,Moulvoudaye,XGBoost global vs XGBoost local,156,-2.006,0.0466
+1,Moutourwa,XGBoost global vs XGBoost local,156,-2.759,0.0065
+1,Mozogo,XGBoost global vs XGBoost local,156,-3.621,0.0004
+1,Pette,XGBoost global vs XGBoost local,156,-2.433,0.0161
+1,Roua,XGBoost global vs XGBoost local,156,-1.785,0.0763
+1,Tokombere,XGBoost global vs XGBoost local,156,-2.974,0.0034
+1,Vele,XGBoost global vs XGBoost local,156,-3.233,0.0015
+1,Yagoua,XGBoost global vs XGBoost local,156,-1.61,0.1094
+1,Bogo,XGBoost global vs Naïf saisonnier,156,-3.4,0.0009
+1,Bourha,XGBoost global vs Naïf saisonnier,156,-4.347,0.0
+1,Fotokol,XGBoost global vs Naïf saisonnier,134,-9.19,0.0
+1,Gazawa,XGBoost global vs Naïf saisonnier,156,-6.341,0.0
+1,Goulfey,XGBoost global vs Naïf saisonnier,156,-3.788,0.0002
+1,Guere,XGBoost global vs Naïf saisonnier,156,-4.358,0.0
+1,Guidiguis,XGBoost global vs Naïf saisonnier,156,-6.076,0.0
+1,Hina,XGBoost global vs Naïf saisonnier,156,-8.949,0.0
+1,Kaele,XGBoost global vs Naïf saisonnier,156,-6.169,0.0
+1,Kar Hay,XGBoost global vs Naïf saisonnier,156,-7.092,0.0
+1,Kolofata,XGBoost global vs Naïf saisonnier,126,-6.721,0.0
+1,Kousseri,XGBoost global vs Naïf saisonnier,156,-6.036,0.0
+1,Koza,XGBoost global vs Naïf saisonnier,156,-4.756,0.0
+1,Mada,XGBoost global vs Naïf saisonnier,156,-10.299,0.0
+1,Maga,XGBoost global vs Naïf saisonnier,156,-6.035,0.0
+1,Makary,XGBoost global vs Naïf saisonnier,156,-5.724,0.0
+1,Maroua 1,XGBoost global vs Naïf saisonnier,156,-4.638,0.0
+1,Maroua 2,XGBoost global vs Naïf saisonnier,156,-8.114,0.0
+1,Maroua 3,XGBoost global vs Naïf saisonnier,156,-6.197,0.0
+1,Meri,XGBoost global vs Naïf saisonnier,156,-8.563,0.0
+1,Mindif,XGBoost global vs Naïf saisonnier,156,-5.808,0.0
+1,Mogode,XGBoost global vs Naïf saisonnier,156,-4.791,0.0
+1,Mokolo,XGBoost global vs Naïf saisonnier,156,-4.134,0.0001
+1,Mora,XGBoost global vs Naïf saisonnier,156,-7.927,0.0
+1,Moulvoudaye,XGBoost global vs Naïf saisonnier,156,-5.891,0.0
+1,Moutourwa,XGBoost global vs Naïf saisonnier,156,-6.338,0.0
+1,Mozogo,XGBoost global vs Naïf saisonnier,156,-6.988,0.0
+1,Pette,XGBoost global vs Naïf saisonnier,156,-5.033,0.0
+1,Roua,XGBoost global vs Naïf saisonnier,156,-8.253,0.0
+1,Tokombere,XGBoost global vs Naïf saisonnier,156,-5.282,0.0
+1,Vele,XGBoost global vs Naïf saisonnier,156,-5.713,0.0
+1,Yagoua,XGBoost global vs Naïf saisonnier,156,-5.396,0.0
+4,Bogo,XGBoost global vs Naïf,153,-3.468,0.0007
+4,Bourha,XGBoost global vs Naïf,153,-1.291,0.1988
+4,Fotokol,XGBoost global vs Naïf,131,-0.407,0.6845
+4,Gazawa,XGBoost global vs Naïf,153,-4.522,0.0
+4,Goulfey,XGBoost global vs Naïf,153,-4.326,0.0
+4,Guere,XGBoost global vs Naïf,153,-2.706,0.0076
+4,Guidiguis,XGBoost global vs Naïf,153,-4.539,0.0
+4,Hina,XGBoost global vs Naïf,153,-0.782,0.4355
+4,Kaele,XGBoost global vs Naïf,153,-3.698,0.0003
+4,Kar Hay,XGBoost global vs Naïf,153,0.177,0.8596
+4,Kolofata,XGBoost global vs Naïf,123,0.465,0.6425
+4,Kousseri,XGBoost global vs Naïf,153,-1.706,0.0901
+4,Koza,XGBoost global vs Naïf,153,-2.485,0.0141
+4,Mada,XGBoost global vs Naïf,153,-1.851,0.0661
+4,Maga,XGBoost global vs Naïf,153,-3.566,0.0005
+4,Makary,XGBoost global vs Naïf,153,-3.619,0.0004
+4,Maroua 1,XGBoost global vs Naïf,153,-5.06,0.0
+4,Maroua 2,XGBoost global vs Naïf,153,-3.71,0.0003
+4,Maroua 3,XGBoost global vs Naïf,153,-3.028,0.0029
+4,Meri,XGBoost global vs Naïf,153,-1.695,0.0921
+4,Mindif,XGBoost global vs Naïf,153,-2.877,0.0046
+4,Mogode,XGBoost global vs Naïf,153,-4.076,0.0001
+4,Mokolo,XGBoost global vs Naïf,153,-3.619,0.0004
+4,Mora,XGBoost global vs Naïf,153,-2.938,0.0038
+4,Moulvoudaye,XGBoost global vs Naïf,153,-1.882,0.0618
+4,Moutourwa,XGBoost global vs Naïf,153,-1.755,0.0814
+4,Mozogo,XGBoost global vs Naïf,153,-2.944,0.0037
+4,Pette,XGBoost global vs Naïf,153,-2.79,0.0059
+4,Roua,XGBoost global vs Naïf,153,-2.918,0.0041
+4,Tokombere,XGBoost global vs Naïf,153,-1.548,0.1237
+4,Vele,XGBoost global vs Naïf,153,-5.157,0.0
+4,Yagoua,XGBoost global vs Naïf,153,-2.114,0.0361
+4,Bogo,XGBoost global vs ARIMA,153,0.253,0.8004
+4,Bourha,XGBoost global vs ARIMA,153,0.732,0.4654
+4,Fotokol,XGBoost global vs ARIMA,131,0.374,0.7094
+4,Gazawa,XGBoost global vs ARIMA,153,-2.079,0.0393
+4,Goulfey,XGBoost global vs ARIMA,153,-2.013,0.0459
+4,Guere,XGBoost global vs ARIMA,153,-0.752,0.4533
+4,Guidiguis,XGBoost global vs ARIMA,153,-0.29,0.7719
+4,Hina,XGBoost global vs ARIMA,153,0.863,0.3892
+4,Kaele,XGBoost global vs ARIMA,153,-2.347,0.0202
+4,Kar Hay,XGBoost global vs ARIMA,153,0.399,0.6905
+4,Kolofata,XGBoost global vs ARIMA,123,-2.872,0.0048
+4,Kousseri,XGBoost global vs ARIMA,153,0.265,0.7917
+4,Koza,XGBoost global vs ARIMA,153,-1.83,0.0692
+4,Mada,XGBoost global vs ARIMA,153,0.481,0.6315
+4,Maga,XGBoost global vs ARIMA,153,-0.829,0.4082
+4,Makary,XGBoost global vs ARIMA,153,2.23,0.0272
+4,Maroua 1,XGBoost global vs ARIMA,153,-3.157,0.0019
+4,Maroua 2,XGBoost global vs ARIMA,153,-1.33,0.1855
+4,Maroua 3,XGBoost global vs ARIMA,153,-1.546,0.1241
+4,Meri,XGBoost global vs ARIMA,153,-0.224,0.8231
+4,Mindif,XGBoost global vs ARIMA,153,0.558,0.5774
+4,Mogode,XGBoost global vs ARIMA,153,-3.136,0.0021
+4,Mokolo,XGBoost global vs ARIMA,153,-1.814,0.0716
+4,Mora,XGBoost global vs ARIMA,153,0.166,0.8687
+4,Moulvoudaye,XGBoost global vs ARIMA,153,-1.785,0.0762
+4,Moutourwa,XGBoost global vs ARIMA,153,-1.652,0.1006
+4,Mozogo,XGBoost global vs ARIMA,153,-1.792,0.0751
+4,Pette,XGBoost global vs ARIMA,153,-0.681,0.4967
+4,Roua,XGBoost global vs ARIMA,153,-1.532,0.1277
+4,Tokombere,XGBoost global vs ARIMA,153,-0.045,0.9642
+4,Vele,XGBoost global vs ARIMA,153,-0.303,0.7624
+4,Yagoua,XGBoost global vs ARIMA,153,-1.753,0.0817
+4,Bogo,XGBoost global vs XGBoost local,153,-3.745,0.0003
+4,Bourha,XGBoost global vs XGBoost local,153,-1.402,0.163
+4,Fotokol,XGBoost global vs XGBoost local,131,-2.008,0.0467
+4,Gazawa,XGBoost global vs XGBoost local,153,-1.359,0.1762
+4,Goulfey,XGBoost global vs XGBoost local,153,-3.038,0.0028
+4,Guere,XGBoost global vs XGBoost local,153,-2.304,0.0226
+4,Guidiguis,XGBoost global vs XGBoost local,153,-1.662,0.0985
+4,Hina,XGBoost global vs XGBoost local,153,-1.32,0.1888
+4,Kaele,XGBoost global vs XGBoost local,153,-1.722,0.0871
+4,Kar Hay,XGBoost global vs XGBoost local,153,-0.02,0.9841
+4,Kolofata,XGBoost global vs XGBoost local,123,-1.598,0.1127
+4,Kousseri,XGBoost global vs XGBoost local,153,0.12,0.905
+4,Koza,XGBoost global vs XGBoost local,153,-2.424,0.0165
+4,Mada,XGBoost global vs XGBoost local,153,-2.045,0.0426
+4,Maga,XGBoost global vs XGBoost local,153,-2.755,0.0066
+4,Makary,XGBoost global vs XGBoost local,153,-0.703,0.4832
+4,Maroua 1,XGBoost global vs XGBoost local,153,-0.921,0.3586
+4,Maroua 2,XGBoost global vs XGBoost local,153,-3.049,0.0027
+4,Maroua 3,XGBoost global vs XGBoost local,153,-2.068,0.0403
+4,Meri,XGBoost global vs XGBoost local,153,-1.9,0.0593
+4,Mindif,XGBoost global vs XGBoost local,153,-2.719,0.0073
+4,Mogode,XGBoost global vs XGBoost local,153,-0.512,0.6091
+4,Mokolo,XGBoost global vs XGBoost local,153,-2.342,0.0205
+4,Mora,XGBoost global vs XGBoost local,153,-2.521,0.0127
+4,Moulvoudaye,XGBoost global vs XGBoost local,153,-0.475,0.6358
+4,Moutourwa,XGBoost global vs XGBoost local,153,-1.999,0.0474
+4,Mozogo,XGBoost global vs XGBoost local,153,-2.087,0.0386
+4,Pette,XGBoost global vs XGBoost local,153,-1.469,0.1439
+4,Roua,XGBoost global vs XGBoost local,153,-1.633,0.1046
+4,Tokombere,XGBoost global vs XGBoost local,153,-0.255,0.7994
+4,Vele,XGBoost global vs XGBoost local,153,-1.084,0.28
+4,Yagoua,XGBoost global vs XGBoost local,153,-1.637,0.1037
+4,Bogo,XGBoost global vs Naïf saisonnier,153,-4.183,0.0
+4,Bourha,XGBoost global vs Naïf saisonnier,153,-2.949,0.0037
+4,Fotokol,XGBoost global vs Naïf saisonnier,131,-5.093,0.0
+4,Gazawa,XGBoost global vs Naïf saisonnier,153,-3.211,0.0016
+4,Goulfey,XGBoost global vs Naïf saisonnier,153,-3.185,0.0018
+4,Guere,XGBoost global vs Naïf saisonnier,153,-2.615,0.0098
+4,Guidiguis,XGBoost global vs Naïf saisonnier,153,-4.321,0.0
+4,Hina,XGBoost global vs Naïf saisonnier,153,-5.517,0.0
+4,Kaele,XGBoost global vs Naïf saisonnier,153,-4.107,0.0001
+4,Kar Hay,XGBoost global vs Naïf saisonnier,153,-2.652,0.0088
+4,Kolofata,XGBoost global vs Naïf saisonnier,123,-2.544,0.0122
+4,Kousseri,XGBoost global vs Naïf saisonnier,153,-3.349,0.001
+4,Koza,XGBoost global vs Naïf saisonnier,153,-3.021,0.003
+4,Mada,XGBoost global vs Naïf saisonnier,153,-4.738,0.0
+4,Maga,XGBoost global vs Naïf saisonnier,153,-2.858,0.0049
+4,Makary,XGBoost global vs Naïf saisonnier,153,-4.629,0.0
+4,Maroua 1,XGBoost global vs Naïf saisonnier,153,-0.765,0.4456
+4,Maroua 2,XGBoost global vs Naïf saisonnier,153,-3.768,0.0002
+4,Maroua 3,XGBoost global vs Naïf saisonnier,153,-3.33,0.0011
+4,Meri,XGBoost global vs Naïf saisonnier,153,-4.773,0.0
+4,Mindif,XGBoost global vs Naïf saisonnier,153,-5.017,0.0
+4,Mogode,XGBoost global vs Naïf saisonnier,153,-2.905,0.0042
+4,Mokolo,XGBoost global vs Naïf saisonnier,153,-3.816,0.0002
+4,Mora,XGBoost global vs Naïf saisonnier,153,-5.055,0.0
+4,Moulvoudaye,XGBoost global vs Naïf saisonnier,153,-2.821,0.0054
+4,Moutourwa,XGBoost global vs Naïf saisonnier,153,-2.657,0.0087
+4,Mozogo,XGBoost global vs Naïf saisonnier,153,-3.784,0.0002
+4,Pette,XGBoost global vs Naïf saisonnier,153,-3.496,0.0006
+4,Roua,XGBoost global vs Naïf saisonnier,153,-4.649,0.0
+4,Tokombere,XGBoost global vs Naïf saisonnier,153,-2.9,0.0043
+4,Vele,XGBoost global vs Naïf saisonnier,153,-4.116,0.0001
+4,Yagoua,XGBoost global vs Naïf saisonnier,153,-2.893,0.0044

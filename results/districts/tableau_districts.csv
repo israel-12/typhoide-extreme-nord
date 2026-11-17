@@ -1,0 +1,33 @@
+district,corr_max,decalage_max,corr_lag8,corr_anomalie_lag8,pct_manquant,cas_moyens,MAE_rel_xgbglobal_h1,meilleur_modele_h1,MAE_rel_xgbglobal_h4,meilleur_modele_h4
+Bogo,0.144,6,0.124,-0.08,0.8,12.5,0.794,ARIMA,0.772,ARIMA
+Bourha,-0.142,0,-0.262,-0.196,6.6,34.8,0.818,ARIMA,0.92,ARIMA
+Fotokol,0.174,7,0.158,0.048,24.1,11.4,0.9,ARIMA,0.96,ARIMA
+Gazawa,0.329,7,0.32,-0.057,2.2,27.1,0.809,XGBoost global,0.827,XGBoost global
+Goulfey,0.037,6,0.012,-0.041,1.9,15.9,0.718,XGBoost global,0.751,XGBoost global
+Guere,0.082,9,0.066,0.056,0.0,13.0,0.857,ARIMA,0.821,XGBoost global
+Guidiguis,0.358,6,0.341,-0.05,0.0,56.1,0.873,ARIMA,0.808,XGBoost global
+Hina,0.215,2,0.031,-0.122,11.5,30.1,0.938,XGBoost global,0.938,ARIMA
+Kaele,0.499,8,0.499,0.058,0.5,35.1,0.844,XGBoost global,0.773,XGBoost global
+Kar Hay,0.3,9,0.29,-0.146,0.3,19.0,0.949,XGBoost local,1.029,ARIMA
+Kolofata,0.01,0,-0.157,-0.008,45.5,4.7,0.956,XGBoost global,1.028,Naïf
+Kousseri,0.237,12,0.214,-0.217,0.0,159.7,1.003,ARIMA,0.905,ARIMA
+Koza,0.421,7,0.407,-0.06,1.6,38.1,0.887,XGBoost global,0.814,XGBoost global
+Mada,0.117,0,-0.047,-0.015,0.5,39.6,0.892,ARIMA,0.891,ARIMA
+Maga,0.206,4,0.15,-0.049,1.1,29.9,0.838,XGBoost global,0.809,XGBoost global
+Makary,-0.027,6,-0.087,0.018,6.6,36.9,0.842,ARIMA,0.827,ARIMA
+Maroua 1,0.313,8,0.313,-0.106,0.8,127.3,0.92,XGBoost global,0.758,XGBoost global
+Maroua 2,0.25,4,0.193,-0.092,0.0,42.2,0.877,XGBoost global,0.771,XGBoost global
+Maroua 3,0.37,10,0.369,-0.018,1.1,35.1,0.849,ARIMA,0.816,XGBoost global
+Meri,0.115,8,0.115,-0.158,6.8,17.8,0.871,ARIMA,0.863,XGBoost global
+Mindif,0.102,3,0.066,0.023,24.7,2.2,0.871,XGBoost global,0.828,ARIMA
+Mogode,0.563,6,0.542,-0.158,0.0,32.5,0.883,XGBoost global,0.762,XGBoost global
+Mokolo,0.489,6,0.486,-0.031,0.0,114.4,0.884,XGBoost global,0.807,XGBoost global
+Mora,0.31,12,0.301,-0.097,0.0,65.2,0.928,ARIMA,0.887,ARIMA
+Moulvoudaye,-0.035,11,-0.065,-0.05,4.7,8.5,0.886,XGBoost global,0.882,XGBoost global
+Moutourwa,0.103,11,0.07,-0.156,0.3,15.4,0.828,XGBoost global,0.867,XGBoost global
+Mozogo,0.221,0,0.002,0.116,28.5,11.4,0.842,XGBoost global,0.808,XGBoost global
+Pette,-0.241,12,-0.295,0.015,0.0,28.7,0.859,ARIMA,0.855,XGBoost global
+Roua,0.142,7,0.14,0.101,0.5,14.9,0.858,XGBoost global,0.828,XGBoost global
+Tokombere,0.033,12,-0.001,0.015,3.6,13.7,0.836,XGBoost global,0.9,XGBoost global
+Vele,0.276,6,0.251,-0.034,0.5,12.3,0.832,XGBoost global,0.763,XGBoost global
+Yagoua,0.356,9,0.34,-0.031,0.0,62.4,0.887,ARIMA,0.876,XGBoost global
