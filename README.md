@@ -1,9 +1,11 @@
-# Pluie et fièvre typhoïde au Sahel camerounais
+# Pluie et fièvre typhoïde dans la région de l'Extrême-Nord du Cameroun
 
 Code, données agrégées, résultats et article de l'étude :
 
-> **Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde au Sahel camerounais — De la modélisation mathématique à l'apprentissage automatique, à partir des données de surveillance de l'Extrême-Nord (2019-2025)**
-> Kazoune Bouba Israel, Maïrousgou Céline, Kolaye Guilsou Gabriel
+> **Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde dans la région de l'Extrême-Nord du Cameroun**
+> Kazoune Bouba Israel, Maïrousgou Céline, Kidwang Jean Pierre, Kolaye Guilsou Gabriel (superviseur)
+>
+> Contacts : kazouneisraelbouba@gmail.com ; kolayegg@gmail.com
 
 *English version of the article:* `article/pdf/Article_rainfall_typhoid_EN.pdf`
 
@@ -31,13 +33,16 @@ figures/        toutes les figures (préfixes fr_ et en_)
 article/
   pdf/          article (FR, EN), matériel supplémentaire S1, guide des formules
   word/         article au format Word (FR, EN)
-  latex/        projet LaTeX prêt pour Overleaf (compilateur XeLaTeX)
+  latex/        projet LaTeX prêt pour Overleaf (mise en page de la revue)
+  latex_classique/  projet LaTeX en style « article » standard (pdfLaTeX)
 notebooks/      carnet Google Colab
 ```
 
 ## Reproduire les analyses
 
 ```bash
+git clone https://github.com/israel-12/typhoide-extreme-nord.git
+cd typhoide-extreme-nord
 pip install -r requirements.txt
 
 # 1. Construire les séries par district à partir de l'export DHIS2

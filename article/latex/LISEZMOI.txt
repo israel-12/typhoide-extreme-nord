@@ -1,5 +1,5 @@
 PROJET OVERLEAF — Influence de la pluviométrie sur la dynamique et la prévision
-de la fièvre typhoïde au Sahel camerounais
+de la fièvre typhoïde dans la région de l'Extrême-Nord du Cameroun
 
 1. Sur Overleaf : New Project > Upload Project > choisir ce fichier .zip.
 2. Menu (en haut à gauche) > Settings > Compiler : XeLaTeX (recommandé, polices TeX Gyre).

@@ -1,0 +1,39 @@
+\begin{table}[!htbp]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Characteristics and results by health district, sorted by total cases (relative MAE of the global model versus the naive model).}\label{tab:annexe}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrrrrrrl@{}}\toprule
+District & Total cases & Cases/week & Missing (\%) & Rain $r$ (8 wk) & Rel. MAE ($h$=1) & Rel. MAE ($h$=4) & Best model ($h$=4) \\\midrule
+Kousseri & 58,276 & 159.7 & 0.0 & 0.21 & 1.00 & 0.91 & ARIMA \\
+Maroua 1 & 46,073 & 127.3 & 0.8 & 0.31 & 0.92 & 0.76 & Global XGBoost \\
+Mokolo & 41,745 & 114.4 & 0.0 & 0.49 & 0.88 & 0.81 & Global XGBoost \\
+Mora & 23,816 & 65.2 & 0.0 & 0.30 & 0.93 & 0.89 & ARIMA \\
+Yagoua & 22,763 & 62.4 & 0.0 & 0.34 & 0.89 & 0.88 & Global XGBoost \\
+Guidiguis & 20,483 & 56.1 & 0.0 & 0.34 & 0.87 & 0.81 & Global XGBoost \\
+Maroua 2 & 15,396 & 42.2 & 0.0 & 0.19 & 0.88 & 0.77 & Global XGBoost \\
+Mada & 14,366 & 39.6 & 0.5 & $-$0.05 & 0.89 & 0.89 & ARIMA \\
+Koza & 13,692 & 38.1 & 1.6 & 0.41 & 0.89 & 0.81 & Global XGBoost \\
+Kaele & 12,757 & 35.1 & 0.5 & 0.50 & 0.84 & 0.77 & Global XGBoost \\
+Maroua 3 & 12,664 & 35.1 & 1.1 & 0.37 & 0.85 & 0.82 & Global XGBoost \\
+Makary & 12,579 & 36.9 & 6.6 & $-$0.09 & 0.84 & 0.83 & ARIMA \\
+Bourha & 11,862 & 34.8 & 6.6 & $-$0.26 & 0.82 & 0.92 & ARIMA \\
+Mogode & 11,851 & 32.5 & 0.0 & 0.54 & 0.88 & 0.76 & Global XGBoost \\
+Maga & 10,777 & 29.9 & 1.1 & 0.15 & 0.84 & 0.81 & Global XGBoost \\
+Pette & 10,492 & 28.7 & 0.0 & $-$0.29 & 0.86 & 0.85 & Global XGBoost \\
+Hina & 9,729 & 30.1 & 11.5 & 0.03 & 0.94 & 0.94 & ARIMA \\
+Gazawa & 9,681 & 27.1 & 2.2 & 0.32 & 0.81 & 0.83 & Global XGBoost \\
+Kar Hay & 6,908 & 19.0 & 0.3 & 0.29 & 0.95 & 1.03 & ARIMA \\
+Meri & 6,045 & 17.8 & 6.8 & 0.12 & 0.87 & 0.86 & Global XGBoost \\
+Goulfey & 5,678 & 15.9 & 1.9 & 0.01 & 0.72 & 0.75 & Global XGBoost \\
+Moutourwa & 5,608 & 15.4 & 0.3 & 0.07 & 0.83 & 0.87 & Global XGBoost \\
+Roua & 5,416 & 14.9 & 0.5 & 0.14 & 0.86 & 0.83 & Global XGBoost \\
+Tokombere & 4,834 & 13.7 & 3.6 & 0.00 & 0.84 & 0.90 & Global XGBoost \\
+Guere & 4,757 & 13.0 & 0.0 & 0.07 & 0.86 & 0.82 & Global XGBoost \\
+Bogo & 4,521 & 12.5 & 0.8 & 0.12 & 0.79 & 0.77 & ARIMA \\
+Vele & 4,483 & 12.3 & 0.5 & 0.25 & 0.83 & 0.76 & Global XGBoost \\
+Fotokol & 3,166 & 11.4 & 24.1 & 0.16 & 0.90 & 0.96 & ARIMA \\
+Mozogo & 2,984 & 11.4 & 28.5 & 0.00 & 0.84 & 0.81 & Global XGBoost \\
+Moulvoudaye & 2,959 & 8.5 & 4.7 & $-$0.07 & 0.89 & 0.88 & Global XGBoost \\
+Kolofata & 941 & 4.7 & 45.5 & $-$0.16 & 0.96 & 1.03 & Naive \\
+Mindif & 608 & 2.2 & 24.7 & 0.07 & 0.87 & 0.83 & ARIMA \\
+\bottomrule\end{tabular}}
+\end{table}

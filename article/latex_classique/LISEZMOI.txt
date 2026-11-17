@@ -1,0 +1,8 @@
+PROJET OVERLEAF — style LaTeX classique (modèle « article » d'Overleaf)
+
+1. Overleaf : New Project > Upload Project > choisir ce fichier .zip.
+2. Compiler : pdfLaTeX (réglage par défaut d'Overleaf, rien à changer).
+3. Main document : main.tex (français). Autres : article_en.tex, S1_formules_fr.tex, S1_formulas_en.tex.
+
+Le style (police Computer Modern, titre centré, résumé, numérotation des sections,
+liens en bleu, marges) est défini dans preambule.tex.

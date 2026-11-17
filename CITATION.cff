@@ -1,12 +1,17 @@
 cff-version: 1.2.0
 message: "Si vous utilisez ce code ou ces résultats, merci de citer l'article."
-title: "Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde au Sahel camerounais"
+title: "Influence de la pluviométrie sur la dynamique et la prévision de la fièvre typhoïde dans la région de l'Extrême-Nord du Cameroun"
 authors:
   - family-names: "Kazoune Bouba"
     given-names: "Israel"
+    email: "kazouneisraelbouba@gmail.com"
   - family-names: "Maïrousgou"
     given-names: "Céline"
+  - family-names: "Kidwang"
+    given-names: "Jean Pierre"
   - family-names: "Kolaye Guilsou"
     given-names: "Gabriel"
-date-released: 2026-11-11
+    email: "kolayegg@gmail.com"
+date-released: 2026-11-17
 license: MIT
+repository-code: "https://github.com/israel-12/typhoide-extreme-nord"

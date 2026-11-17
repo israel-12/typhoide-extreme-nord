@@ -4,30 +4,28 @@
 \ifPDFTeX\usepackage[english]{babel}\else\usepackage{polyglossia}\setmainlanguage{english}\fi
 \usepackage{rotating}
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
-\fancyhead[L]{\sffamily\footnotesize\color{navy} Rainfall and typhoid fever in the Cameroonian Sahel}
+\fancyhead[L]{\sffamily\footnotesize\color{navy} Rainfall and typhoid fever in the Far North Region of Cameroon}
 \fancyhead[R]{\sffamily\footnotesize\color{navy} Kazoune Bouba et al.}
 \fancyfoot[C]{\sffamily\footnotesize\thepage}
 \begin{document}\sloppy
 \thispagestyle{fancy}
 \noindent{\sffamily\footnotesize\color{ora}\textbf{RESEARCH ARTICLE}\hfill\color{navy} Open Access}\par\vspace{2pt}
 \noindent{\color{navy}\rule{\linewidth}{1.2pt}}\par\vspace{8pt}
-{\raggedright\sffamily\bfseries\LARGE\color{navy}Influence of rainfall on the dynamics and forecasting of typhoid fever in the Cameroonian Sahel\par}
-\vspace{4pt}
-{\raggedright\sffamily\large\color{navy}From mathematical modelling to machine learning, using surveillance data from the Far North Region (2019–2025)\par}
+{\raggedright\sffamily\bfseries\LARGE\color{navy}Influence of rainfall on the dynamics and forecasting of typhoid fever in the Far North Region of Cameroon\par}
 \vspace{10pt}
-\noindent{\sffamily\normalsize Kazoune Bouba Israel\textsuperscript{1,2,*}, Maïrousgou Céline\textsuperscript{1}, Kolaye Guilsou Gabriel\textsuperscript{2}\par}
+\noindent{\sffamily\normalsize Kazoune Bouba Israel\textsuperscript{1,2,*}, Maïrousgou Céline\textsuperscript{1}, Kidwang Jean Pierre\textsuperscript{1}, Kolaye Guilsou Gabriel\textsuperscript{2,*}\par}
 \vspace{4pt}
 \noindent{\footnotesize\textsuperscript{1}\,Regional Delegation of Public Health of the Far North, Maroua, Cameroon\\
 \textsuperscript{2}\,National Advanced School of Engineering of Maroua, University of Maroua, Maroua, Cameroon\\
-\textsuperscript{*}\,Corresponding author: [e-mail address]\par}
+\textsuperscript{*}\,Corresponding authors: \href{mailto:kazouneisraelbouba@gmail.com}{kazouneisraelbouba@gmail.com}; \href{mailto:kolayegg@gmail.com}{kolayegg@gmail.com}\par}
 \vspace{10pt}
 \begin{tcolorbox}[colback=white,colframe=black,boxrule=0.5pt,arc=0pt,left=8pt,right=8pt,top=6pt,bottom=6pt,fontupper=\small]
 {\sffamily\bfseries\color{navy}Abstract}\par\vspace{3pt}
-\textbf{Background.} Typhoid fever is one of the most frequently reported diseases in the Far North Region of Cameroon, a Sahelian area with a single rainy season. We studied the influence of rainfall on its dynamics and assessed whether rainfall helps forecast cases, in order to guide health district preparedness.\par
+\textbf{Background.} Typhoid fever is a major health burden in the Far North Region of Cameroon, characterised by a single rainy season: more than 400,000 cases were reported there between 2019 and 2025. We studied the influence of rainfall on its dynamics and assessed whether rainfall helps forecast cases, in order to guide health district preparedness.\par
 \textbf{Methods.} We analysed 417,910 cases reported to DHIS2 by 522 health facilities in 32 districts (2019–2025), combined with satellite rainfall data. A transmission model with an environmental reservoir, in which rainfall contaminates water, was used to formulate hypotheses. The rainfall–case relationship was measured after detrending, distinguishing the timing of the season from its intensity. Several forecasting methods, with and without rainfall, were evaluated over three years (2023–2025) and compared with the Diebold–Mariano test.\par
 \textbf{Results.} Cases peaked in October, about two months after the August rainfall peak (maximum correlation 0.54 at 8 weeks). In contrast, a wetter-than-normal season did not lead to more cases, and adding rainfall did not improve forecasts. A machine learning model shared across the 32 districts reduced four-week forecast error by 15\% relative to the benchmark method ($p<0.001$). The rise in cases between 2019 and 2022 coincided with a tripling of the number of reporting facilities.\par
 \textbf{Conclusion.} Rainfall sets the timing of the typhoid season but not its intensity: district preparedness can be planned from July, while reducing peaks depends on water, sanitation and diagnosis.\par\vspace{3pt}
-\textbf{Keywords:} typhoid fever; rainfall; seasonality; mathematical modelling; forecasting; surveillance; DHIS2; Sahel; Cameroon
+\textbf{Keywords:} typhoid fever; rainfall; seasonality; mathematical modelling; forecasting; surveillance; DHIS2; Far North; Cameroon
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=white,colframe=black,boxrule=0.5pt,arc=0pt,left=8pt,right=8pt,top=5pt,bottom=5pt,fontupper=\small]
@@ -40,7 +38,7 @@
 \section{Introduction}
 Typhoid fever, caused by \textit{Salmonella enterica} serovar Typhi, is transmitted through water and food contaminated with faeces. It causes several million cases and more than 100,000 deaths each year, mainly in South Asia and sub-Saharan Africa [\hyperlink{ref1}{1},\hyperlink{ref2}{2}]. In sub-Saharan Africa its burden remains poorly measured, as diagnosis often relies on clinical signs or the poorly specific Widal test [\hyperlink{ref3}{3}].
 
-In the Far North Region of Cameroon, a Sahelian area with a single rainy season, typhoid is among the most frequently reported diseases in the weekly DHIS2 surveillance system [\hyperlink{ref4}{4}]. Rainfall is likely to play a central role: it causes runoff, overflowing latrines and contamination of wells and ponds, the main water sources of many households. Understanding how rainfall influences typhoid, and whether it helps anticipate cases, would directly help district teams plan their response.
+In the Far North Region of Cameroon, characterised by a single rainy season, typhoid is among the most frequently reported diseases in the weekly DHIS2 surveillance system [\hyperlink{ref4}{4}]. Rainfall is likely to play a central role: it causes runoff, overflowing latrines and contamination of wells and ponds, the main water sources of many households. Understanding how rainfall influences typhoid, and whether it helps anticipate cases, would directly help district teams plan their response.
 
 Two complementary approaches can be used to study this influence. Mathematical transmission models describe mechanisms, including the accumulation of bacteria in the environment [\hyperlink{ref5}{5},\hyperlink{ref6}{6}], but their parameters are rarely known locally. Statistical and machine learning methods learn directly from observed data and have been used to forecast typhoid in India, in several high-income countries and in Nepal, where it was associated with rainfall and flooding [\hyperlink{ref7}{7}--\hyperlink{ref9}{9}]. However, these studies rarely concern Africa, and their model comparisons often rely on a single test period, without a simple benchmark or statistical test [\hyperlink{ref10}{10}].
 
@@ -50,7 +48,7 @@ This study links these two approaches. Starting from a transmission model in whi
 \subsection{Study area}
 The study was conducted in the Far North Region of Cameroon, the country's northernmost region, located between 10° and 13° North latitude and 13° and 16° East longitude (Figure~\ref{fig:f2a_reference}). Covering approximately 34,263 km², it borders Nigeria to the west and Chad to the east, and reaches Lake Chad to the north. It was organised into 32 health districts over the study period, distributed among its six departments: Diamaré (Bogo, Gazawa, Maroua 1, Maroua 2, Maroua 3, Meri, Pette), Logone-et-Chari (Fotokol, Goulfey, Kousseri, Mada, Makary), Mayo-Danay (Guere, Kar-Hay, Maga, Vele, Yagoua), Mayo-Kani (Guidiguis, Kaele, Mindif, Moulvoudaye, Moutourwa), Mayo-Sava (Kolofata, Mora, Tokombere) and Mayo-Tsanaga (Bourha, Hina, Koza, Mogode, Mokolo, Mozogo, Roua).
 
-The region has a Sahelo-Sudanian climate, with a long dry season from October to May and a short but intense rainy season from June to September. A large part of the population obtains water from wells, boreholes and ponds, which are exposed to runoff during the rainy season. The region is also affected by insecurity linked to armed groups and by population displacement, which weaken access to care and reporting regularity in some border districts. These characteristics make the Far North a particularly relevant setting to study the link between rainfall and waterborne diseases.
+The region has a semi-arid tropical climate, with a long dry season from October to May and a short but intense rainy season from June to September. A large part of the population obtains water from wells, boreholes and ponds, which are exposed to runoff during the rainy season. The region is also affected by insecurity linked to armed groups and by population displacement, which weaken access to care and reporting regularity in some border districts. These characteristics make the Far North a particularly relevant setting to study the link between rainfall and waterborne diseases.
 
 \begin{sidewaysfigure}[p]\centering\includegraphics[width=0.95\textheight]{figures/en_zone_etude.png}\caption{Study area. Left: location of Cameroon in Africa and of the Far North Region in Cameroon, and legend. Centre: the 32 health districts, coloured by department; the number in the circle is the number of reporting health facilities in the district. Right: list of districts by department. District boundaries and health facilities: DHIS-Minsante-CM; country boundaries: Natural Earth.}\label{fig:f2a_reference}\end{sidewaysfigure}
 
@@ -148,7 +146,7 @@ XGBoost (local, global, with climate) & One model per horizon; forecasts the cha
 One- and four-week-ahead forecasts were evaluated over 2023–2025 (156 weeks), when the surveillance network was stable. Each week, each model was retrained on past data only, as in real conditions (rolling origin [\hyperlink{ref23}{23}]). Accuracy was measured by the mean absolute error (MAE) [\hyperlink{ref24}{24}], root mean squared error (RMSE) and percentage error (MAPE). Differences between methods were tested with the Diebold–Mariano test [\hyperlink{ref25}{25}] with the Harvey–Leybourne–Newbold correction [\hyperlink{ref26}{26}], district by district and across all districts. The regional evaluation was repeated excluding districts with incomplete data.
 
 \subsection{Software and ethics}
-Analyses were performed in Python (pandas, statsmodels, prophet, xgboost, scipy); analysis scripts are deposited in a public GitHub repository (typhoide-extreme-nord). The study uses only aggregated routine surveillance data, without individual information; their use was authorised by the Regional Delegation of Public Health of the Far North (DRSP-EN).
+Analyses were performed in Python (pandas, statsmodels, prophet, xgboost, scipy); analysis scripts are deposited in a public GitHub repository (\url{https://github.com/israel-12/typhoide-extreme-nord}). The study uses only aggregated routine surveillance data, without individual information; their use was authorised by the Regional Delegation of Public Health of the Far North (DRSP-EN).
 
 \section{Results}
 \subsection{Data description}
@@ -287,7 +285,7 @@ No missing weeks & 9 & +12.3 & 0.044 & +15.2 & +4.3 & 0.43 \\\bottomrule
 In the Far North Region of Cameroon, rainfall sets the timing of the typhoid season but not its intensity. Cases peak every year in October, about two months after the rainfall peak, whereas a wetter-than-normal season does not lead to more cases and rainfall does not improve short-term forecasts.
 
 \subsection{What the mathematical model explains}
-These two findings match the two predictions of the transmission model. The two-month lag is consistent with the chain described by equation~\eqref{eq:pluie}: progressive contamination of wells and ponds during the rainy season, incubation, then consultation and reporting. In Nepal, cases also follow the monsoon, with a lag of about one month after floods [\hyperlink{ref9}{9}]; the longer lag observed here may reflect the Sahelian context, where water sources become progressively contaminated [\hyperlink{ref27}{27}]. The saturating force of infection~\eqref{eq:lambda} offers an explanation for the absence of an effect of rainfall intensity: during the rainy season, the environment may already be contaminated enough for extra rainfall to hardly change risk. Peak intensity would then depend on other factors, such as access to safe water, sanitation, population movements or diagnostic practices. This explanation remains a hypothesis that water quality measurements could test.
+These two findings match the two predictions of the transmission model. The two-month lag is consistent with the chain described by equation~\eqref{eq:pluie}: progressive contamination of wells and ponds during the rainy season, incubation, then consultation and reporting. In Nepal, cases also follow the monsoon, with a lag of about one month after floods [\hyperlink{ref9}{9}]; the longer lag observed here may reflect the context of the Far North, where water sources become progressively contaminated [\hyperlink{ref27}{27}]. The saturating force of infection~\eqref{eq:lambda} offers an explanation for the absence of an effect of rainfall intensity: during the rainy season, the environment may already be contaminated enough for extra rainfall to hardly change risk. Peak intensity would then depend on other factors, such as access to safe water, sanitation, population movements or diagnostic practices. This explanation remains a hypothesis that water quality measurements could test.
 
 This mechanism also explains why rainfall does not improve forecasts: if its information reduces to the timing of the season, it is already contained in recent cases and the time of year. This finding does not contradict the Nepalese study, where floods explained part of the variation in cases [\hyperlink{ref9}{9}]: explaining variation, seasonality included, is not the same as improving a forecast that already knows the season.
 
@@ -313,59 +311,58 @@ Whole region & Use a global model, retrained weekly, alongside DHIS2 alert thres
 \end{table}
 
 \subsection{Strengths and limitations}
-The study covers all districts of a region over seven years, with documented pre-processing and a strict three-year evaluation protocol. Four limitations should be noted.
+The study covers all districts of a region over seven years, with documented pre-processing and a strict three-year evaluation protocol. Three limitations should be noted.
 
 \begin{enumerate}[label=\arabic*.,leftmargin=1.6em]
 \item \textbf{Widal diagnosis and malaria co-endemicity.} Reported cases mainly rely on the Widal serological test, whose specificity is low in endemic areas [\hyperlink{ref3}{3}]; cross-reactions are possible, notably with malaria, whose seasonal peak coincides with the end of the rainy season. This bias may amplify the apparent magnitude of the October peak. However, as diagnostic practices remained constant over 2019–2025, it does not undermine the analysis of seasonal timing or the relative comparison of forecasting methods.
 \item \textbf{Missing data.} Four districts affected by insecurity (Kolofata, Mozogo, Mindif, Fotokol) have more than 20\% missing weeks, and imputation may have smoothed real variation; evaluation on observed weeks only and sensitivity analyses limit this effect.
-\item \textbf{Resolution of climate data.} NASA POWER data have a resolution of about 50 km, so several neighbouring districts share the same values; finer products (CHIRPS, ERA5-Land) might reveal local effects.
 \item \textbf{Lack of weekly cofactors.} Access to water, sanitation and population movements, likely to drive peak intensity, were not available at weekly resolution.
 \end{enumerate}
 
 \section{Conclusion}
-In the Cameroonian Sahel, rainfall tells \textit{when} the typhoid season will come, about two months ahead, but not \textit{how many} cases it will produce. Districts can therefore plan their preparedness from July, while reducing peaks depends on access to safe water, sanitation and diagnosis. For short-term operational forecasting, a single model shared across districts, fed with routine DHIS2 data, provides a simple and validated baseline.
+In the Far North Region of Cameroon, rainfall tells \textit{when} the typhoid season will come, about two months ahead, but not \textit{how many} cases it will produce. Districts can therefore plan their preparedness from July, while reducing peaks depends on access to safe water, sanitation and diagnosis. For short-term operational forecasting, a single model shared across districts, fed with routine DHIS2 data, provides a simple and validated baseline.
 
 \section*{Declarations}
 \small
 \textbf{Supplementary material.} S1: full mathematical formulation (pre-processing, exploratory analysis, transmission model, forecasting models and statistical tests).
-\textbf{Author contributions (CRediT taxonomy).} Kazoune Bouba Israel: conceptualisation, methodology, software, data curation, formal analysis, visualisation, writing -- original draft. Maïrousgou Céline: resources, data curation, validation, writing -- review and editing. Kolaye Guilsou Gabriel: conceptualisation, supervision, validation, writing -- review and editing. All authors read and approved the final manuscript.
+\textbf{Author contributions (CRediT taxonomy).} Kazoune Bouba Israel: conceptualisation, methodology, software, data curation, formal analysis, visualisation, writing -- original draft. Maïrousgou Céline: resources, data curation, validation, writing -- review and editing. Kidwang Jean Pierre: validation, writing -- review and editing. Kolaye Guilsou Gabriel (study supervisor): conceptualisation, methodology, supervision, validation, project administration, writing -- review and editing. All authors read and approved the final manuscript.
 \textbf{Funding.} This research received no external funding.
 \textbf{Ethics.} The study uses only aggregated routine surveillance data, without individual information; their use was authorised by the Regional Delegation of Public Health of the Far North (DRSP-EN).
-\textbf{Data and code availability.} District-level aggregated cases are available from the authors subject to approval by the Ministry of Public Health; climate data are public (NASA POWER); analysis scripts are deposited in the public GitHub repository typhoide-extreme-nord.
+\textbf{Data and code availability.} District-level aggregated cases are available from the authors subject to approval by the Ministry of Public Health; climate data are public (NASA POWER); analysis scripts are deposited in the public GitHub repository \url{https://github.com/israel-12/typhoide-extreme-nord}.
 \textbf{Acknowledgements.} To the staff of the Regional Delegation and of health facilities who report surveillance data every week.
 \textbf{Competing interests.} None.
 
 \section*{References}
 \footnotesize
-\noindent\textit{References marked “to be verified” are cited from memory and must be checked before submission. Clicking a reference number in the text jumps to the corresponding reference.}
+\noindent\textit{Reference numbers in the text and DOIs are clickable links.}
 \begin{enumerate}[label={[\arabic*]},leftmargin=2.2em,itemsep=0.5pt]
-\item\hypertarget{ref1}{}Stanaway JD, et al. The global burden of typhoid and paratyphoid fevers: a systematic analysis for the Global Burden of Disease Study 2017. \textit{Lancet Infect Dis.} 2019;19:369--381. (to be verified)
-\item\hypertarget{ref2}{}Antillón M, Warren JL, Crawford FW, Weinberger DM, Kürüm E, Pak GD, Marks F, Pitzer VE. The burden of typhoid fever in low- and middle-income countries: a meta-regression approach. \textit{PLoS Negl Trop Dis.} 2017;11(2):e0005376.
-\item\hypertarget{ref3}{}Yemeli Piankeu J, et al. Epidemiology and performances of Typhidot immunoassay and Widal slide agglutination in the diagnosis of typhoid fever in febrile patients in Bafoussam City, Cameroon. \textit{Can J Infect Dis Med Microbiol.} 2024;2024:6635067.
+\item\hypertarget{ref1}{}Stanaway JD, et al. The global burden of typhoid and paratyphoid fevers: a systematic analysis for the Global Burden of Disease Study 2017. \textit{Lancet Infect Dis.} 2019;19:369--381. \href{https://doi.org/10.1016/S1473-3099(18)30685-6}{\nolinkurl{doi:10.1016/S1473-3099(18)30685-6}}
+\item\hypertarget{ref2}{}Antillón M, Warren JL, Crawford FW, Weinberger DM, Kürüm E, Pak GD, Marks F, Pitzer VE. The burden of typhoid fever in low- and middle-income countries: a meta-regression approach. \textit{PLoS Negl Trop Dis.} 2017;11(2):e0005376. \href{https://doi.org/10.1371/journal.pntd.0005376}{\nolinkurl{doi:10.1371/journal.pntd.0005376}}
+\item\hypertarget{ref3}{}Yemeli Piankeu J, et al. Epidemiology and performances of Typhidot immunoassay and Widal slide agglutination in the diagnosis of typhoid fever in febrile patients in Bafoussam City, Cameroon. \textit{Can J Infect Dis Med Microbiol.} 2024;2024:6635067. \href{https://doi.org/10.1155/2024/6635067}{\nolinkurl{doi:10.1155/2024/6635067}}
 \item\hypertarget{ref4}{}Ministère de la Santé publique du Cameroun (MINSANTE). \textit{Plan opérationnel de mise en œuvre du DHIS2 2022--2024.} Yaoundé : MINSANTE ; 2022.
-\item\hypertarget{ref5}{}Tilahun GT, Makinde OD, Malonza D. Modelling and optimal control of typhoid fever disease with cost-effective strategies. \textit{Comput Math Methods Med.} 2017;2017:2324518.
-\item\hypertarget{ref6}{}Sabir Z, Abdelkawy MA, Mehmood MA, Bayram M. Modeling typhoid dynamics using recurrent neural networks with Bayesian regularization. \textit{Comput Biol Chem.} 2026. doi:10.1016/j.compbiolchem.2025.108790.
+\item\hypertarget{ref5}{}Tilahun GT, Makinde OD, Malonza D. Modelling and optimal control of typhoid fever disease with cost-effective strategies. \textit{Comput Math Methods Med.} 2017;2017:2324518. \href{https://doi.org/10.1155/2017/2324518}{\nolinkurl{doi:10.1155/2017/2324518}}
+\item\hypertarget{ref6}{}Sabir Z, Abdelkawy MA, Mehmood MA, Bayram M. Modeling typhoid dynamics using recurrent neural networks with Bayesian regularization. \textit{Comput Biol Chem.} 2026. \href{https://doi.org/10.1016/j.compbiolchem.2025.108790}{\nolinkurl{doi:10.1016/j.compbiolchem.2025.108790}}
 \item\hypertarget{ref7}{}Shashvat K, Basu R, Bhondekar AP, Lamba S, Verma K, Kaur A. Comparison of time series models predicting trends in typhoid cases in northern India. \textit{Southeast Asian J Trop Med Public Health.} 2019;50:347--356.
-\item\hypertarget{ref8}{}Dixon S, Keshavamurthy R, Farber DH, Stevens A, Pazdernik KT, Charles LE. A comparison of infectious disease forecasting methods across locations, diseases, and time. \textit{Pathogens.} 2022;11:185.
+\item\hypertarget{ref8}{}Dixon S, Keshavamurthy R, Farber DH, Stevens A, Pazdernik KT, Charles LE. A comparison of infectious disease forecasting methods across locations, diseases, and time. \textit{Pathogens.} 2022;11:185. \href{https://doi.org/10.3390/pathogens11020185}{\nolinkurl{doi:10.3390/pathogens11020185}}
 \item\hypertarget{ref9}{}Baral K, Bista R, Kaasbøll J. Predictive modeling of typhoid incidence in Nepal under extreme climate change scenarios using machine learning algorithm. In: \textit{ICT4D 2026}, IFIP AICT 784. Springer; 2026. p.~216--237.
-\item\hypertarget{ref10}{}Makridakis S, Spiliotis E, Assimakopoulos V. Statistical and machine learning forecasting methods: concerns and ways forward. \textit{PLoS ONE.} 2018;13:e0194889.
-\item\hypertarget{ref11}{}NASA POWER (Prediction Of Worldwide Energy Resources). Daily data. https://power.larc.nasa.gov (to be verified)
-\item\hypertarget{ref12}{}Hampel FR. The influence curve and its role in robust estimation. \textit{J Am Stat Assoc.} 1974;69:383--393. (to be verified)
-\item\hypertarget{ref13}{}Taylor LR. Aggregation, variance and the mean. \textit{Nature.} 1961;189:732--735. (to be verified)
-\item\hypertarget{ref14}{}Cleveland RB, Cleveland WS, McRae JE, Terpenning I. STL: a seasonal-trend decomposition procedure based on loess. \textit{J Off Stat.} 1990;6:3--73. (to be verified)
-\item\hypertarget{ref15}{}Dickey DA, Fuller WA. Distribution of the estimators for autoregressive time series with a unit root. \textit{J Am Stat Assoc.} 1979;74:427--431. (to be verified)
-\item\hypertarget{ref16}{}Kwiatkowski D, Phillips PCB, Schmidt P, Shin Y. Testing the null hypothesis of stationarity against the alternative of a unit root. \textit{J Econom.} 1992;54:159--178. (to be verified)
-\item\hypertarget{ref17}{}Ljung GM, Box GEP. On a measure of lack of fit in time series models. \textit{Biometrika.} 1978;65:297--303. (to be verified)
-\item\hypertarget{ref18}{}Box GEP, Jenkins GM, Reinsel GC, Ljung GM. \textit{Time Series Analysis: Forecasting and Control.} 5th ed. Wiley; 2015. (to be verified)
-\item\hypertarget{ref19}{}Taylor SJ, Letham B. Forecasting at scale. \textit{Am Stat.} 2018;72:37--45. (to be verified)
-\item\hypertarget{ref20}{}Chen T, Guestrin C. XGBoost: a scalable tree boosting system. In: \textit{Proc. 22nd ACM SIGKDD.} 2016. p.~785--794.
-\item\hypertarget{ref21}{}Montero-Manso P, Hyndman RJ. Principles and algorithms for forecasting groups of time series: locality and globality. \textit{Int J Forecast.} 2021;37:1632--1653. (to be verified)
-\item\hypertarget{ref22}{}Makridakis S, Spiliotis E, Assimakopoulos V. M5 accuracy competition: results, findings, and conclusions. \textit{Int J Forecast.} 2022;38:1346--1364. (to be verified)
-\item\hypertarget{ref23}{}Hyndman RJ, Athanasopoulos G. \textit{Forecasting: Principles and Practice.} 3rd ed. OTexts; 2021. (to be verified)
-\item\hypertarget{ref24}{}Willmott CJ, Matsuura K. Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. \textit{Clim Res.} 2005;30:79--82.
-\item\hypertarget{ref25}{}Diebold FX, Mariano RS. Comparing predictive accuracy. \textit{J Bus Econ Stat.} 1995;13:253--263. (to be verified)
-\item\hypertarget{ref26}{}Harvey D, Leybourne S, Newbold P. Testing the equality of prediction mean squared errors. \textit{Int J Forecast.} 1997;13:281--291. (to be verified)
-\item\hypertarget{ref27}{}\textit{To be completed: seasonality of typhoid fever in sub-Saharan Africa.}
+\item\hypertarget{ref10}{}Makridakis S, Spiliotis E, Assimakopoulos V. Statistical and machine learning forecasting methods: concerns and ways forward. \textit{PLoS ONE.} 2018;13:e0194889. \href{https://doi.org/10.1371/journal.pone.0194889}{\nolinkurl{doi:10.1371/journal.pone.0194889}}
+\item\hypertarget{ref11}{}NASA Langley Research Center. POWER (Prediction Of Worldwide Energy Resources) Project: daily meteorological data. \url{https://power.larc.nasa.gov}
+\item\hypertarget{ref12}{}Hampel FR. The influence curve and its role in robust estimation. \textit{J Am Stat Assoc.} 1974;69:383--393. \href{https://doi.org/10.1080/01621459.1974.10482962}{\nolinkurl{doi:10.1080/01621459.1974.10482962}}
+\item\hypertarget{ref13}{}Taylor LR. Aggregation, variance and the mean. \textit{Nature.} 1961;189:732--735. \href{https://doi.org/10.1038/189732a0}{\nolinkurl{doi:10.1038/189732a0}}
+\item\hypertarget{ref14}{}Cleveland RB, Cleveland WS, McRae JE, Terpenning I. STL: a seasonal-trend decomposition procedure based on loess. \textit{J Off Stat.} 1990;6:3--73.
+\item\hypertarget{ref15}{}Dickey DA, Fuller WA. Distribution of the estimators for autoregressive time series with a unit root. \textit{J Am Stat Assoc.} 1979;74:427--431. \href{https://doi.org/10.1080/01621459.1979.10482531}{\nolinkurl{doi:10.1080/01621459.1979.10482531}}
+\item\hypertarget{ref16}{}Kwiatkowski D, Phillips PCB, Schmidt P, Shin Y. Testing the null hypothesis of stationarity against the alternative of a unit root. \textit{J Econom.} 1992;54:159--178. \href{https://doi.org/10.1016/0304-4076(92)90104-Y}{\nolinkurl{doi:10.1016/0304-4076(92)90104-Y}}
+\item\hypertarget{ref17}{}Ljung GM, Box GEP. On a measure of lack of fit in time series models. \textit{Biometrika.} 1978;65:297--303. \href{https://doi.org/10.1093/biomet/65.2.297}{\nolinkurl{doi:10.1093/biomet/65.2.297}}
+\item\hypertarget{ref18}{}Box GEP, Jenkins GM, Reinsel GC, Ljung GM. \textit{Time Series Analysis: Forecasting and Control.} 5th ed. Wiley; 2015.
+\item\hypertarget{ref19}{}Taylor SJ, Letham B. Forecasting at scale. \textit{Am Stat.} 2018;72:37--45. \href{https://doi.org/10.1080/00031305.2017.1380080}{\nolinkurl{doi:10.1080/00031305.2017.1380080}}
+\item\hypertarget{ref20}{}Chen T, Guestrin C. XGBoost: a scalable tree boosting system. In: \textit{Proc. 22nd ACM SIGKDD.} 2016. p.~785--794. \href{https://doi.org/10.1145/2939672.2939785}{\nolinkurl{doi:10.1145/2939672.2939785}}
+\item\hypertarget{ref21}{}Montero-Manso P, Hyndman RJ. Principles and algorithms for forecasting groups of time series: locality and globality. \textit{Int J Forecast.} 2021;37:1632--1653. \href{https://doi.org/10.1016/j.ijforecast.2021.03.004}{\nolinkurl{doi:10.1016/j.ijforecast.2021.03.004}}
+\item\hypertarget{ref22}{}Makridakis S, Spiliotis E, Assimakopoulos V. M5 accuracy competition: results, findings, and conclusions. \textit{Int J Forecast.} 2022;38:1346--1364. \href{https://doi.org/10.1016/j.ijforecast.2021.11.013}{\nolinkurl{doi:10.1016/j.ijforecast.2021.11.013}}
+\item\hypertarget{ref23}{}Hyndman RJ, Athanasopoulos G. \textit{Forecasting: Principles and Practice.} 3rd ed. OTexts; 2021. \url{https://otexts.com/fpp3/}
+\item\hypertarget{ref24}{}Willmott CJ, Matsuura K. Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. \textit{Clim Res.} 2005;30:79--82. \href{https://doi.org/10.3354/cr030079}{\nolinkurl{doi:10.3354/cr030079}}
+\item\hypertarget{ref25}{}Diebold FX, Mariano RS. Comparing predictive accuracy. \textit{J Bus Econ Stat.} 1995;13:253--263. \href{https://doi.org/10.1080/07350015.1995.10524599}{\nolinkurl{doi:10.1080/07350015.1995.10524599}}
+\item\hypertarget{ref26}{}Harvey D, Leybourne S, Newbold P. Testing the equality of prediction mean squared errors. \textit{Int J Forecast.} 1997;13:281--291. \href{https://doi.org/10.1016/S0169-2070(96)00719-4}{\nolinkurl{doi:10.1016/S0169-2070(96)00719-4}}
+\item\hypertarget{ref27}{}Saad NJ, Lynch VD, Antillón M, Yang C, Crump JA, Pitzer VE. Seasonal dynamics of typhoid and paratyphoid fever. \textit{Sci Rep.} 2018;8:6870. \href{https://doi.org/10.1038/s41598-018-25234-w}{\nolinkurl{doi:10.1038/s41598-018-25234-w}}
 \end{enumerate}
 
 \normalsize

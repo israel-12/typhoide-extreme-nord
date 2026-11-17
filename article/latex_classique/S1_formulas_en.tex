@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\def\figlang{en}
+\input{preambule}
+\usepackage[english]{babel}
+\renewcommand{\theequation}{S\arabic{equation}}
+\title{Supplementary Material S1\\[0.6ex] \large Full mathematical formulation}
+\author{Kazoune Bouba Israel, Maïrousgou Céline,\\ Kidwang Jean Pierre, Kolaye Guilsou Gabriel}
+\date{}
+\begin{document}\sloppy
+\maketitle
+
+\noindent This document gathers the formulas of the article “Influence of rainfall on the dynamics and forecasting of typhoid fever in the Far North Region of Cameroon”. Equations are numbered with the prefix S. Tables, figures and references are presented in the main article; numbers in brackets refer to its reference list.
+
+\section{Data pre-processing}
+
+
+\subsection{Extraction and aggregation}
+Let $x_{f,k,t}$ be the number of cases reported by health facility $f$, in age–sex category $k$, in week $t$. The 522 facilities were linked to their district $d$ through the organisation unit hierarchy, and cases were aggregated:
+\begin{equation}
+y_{d,t}=\sum_{f\in d}\;\sum_{k} x_{f,k,t}, \qquad Y_t=\sum_{d=1}^{32} y_{d,t}.
+\label{eq:agg}
+\end{equation}
+A district-week was considered missing when no facility in the district reported a value.
+
+\subsection{Quality control and harmonisation}
+The export was compared with an earlier extraction covering 2019–2023: weekly regional totals matched (median difference 0\%), the few discrepancies corresponding to late corrections. Five recently created districts (Gawar, Kaï-Kaï, Mokong, Tourou, Waza) were merged back into their district of origin. The two facilities now attached to Waza were reassigned to Mora: the sum Mora + Waza reproduces the historical Mora series for 250 of 261 weeks. The number $N_t$ of reporting facilities was computed for each week.
+
+\subsection{Missing data}
+The structure of missing data was examined by district and year. Missing weeks were imputed by linear interpolation within each district: for a missing week $t$ between observed weeks $t_1<t<t_2$,
+\begin{equation}
+\hat{y}_{d,t}=y_{d,t_1}+\frac{t-t_1}{t_2-t_1}\left(y_{d,t_2}-y_{d,t_1}\right),
+\label{eq:interp}
+\end{equation}
+then rounded to the nearest integer. Imputed weeks were used to build predictors but never as reference values when evaluating district forecasts.
+
+\subsection{Outliers}
+Outliers were screened with the Hampel filter [12]: an observation is flagged when it deviates from the rolling median $\tilde{m}_{d,t}$ (9-week window) by more than three times the normalised median absolute deviation,
+\begin{equation}
+\left|y_{d,t}-\tilde{m}_{d,t}\right|>3\times1.4826\times\operatorname{med}_{|j|\le4}\left|y_{d,t+j}-\tilde{m}_{d,t}\right|.
+\label{eq:hampel}
+\end{equation}
+Flagged values were not corrected: without external information to distinguish a data-entry error from a genuine outbreak, we retained them, as MAE and tree-based models are robust to isolated values.
+
+\subsection{Alignment of climate data}
+Daily values were aggregated into Monday-to-Sunday weeks aligned with epidemiological weeks: weekly totals for rainfall, $P_{d,t}=\sum_{j\in t}p_{d,j}$, and weekly means for temperature and humidity. Regional series are the mean of the 32 districts.
+
+\subsection{Mean–variance relationship and transformation}
+The relationship between the mean $\mu_d$ and variance $\sigma^2_d$ of district cases was estimated with Taylor's power law [13]:
+\begin{equation}
+\log\sigma^2_d=\log a+b\,\log\mu_d .
+\label{eq:taylor}
+\end{equation}
+An exponent $b>1$ indicates overdispersion increasing with the level of cases, which justifies the logarithmic transformation $u_{d,t}=\ln(1+y_{d,t})$ when districts of very different sizes are modelled together.
+
+\section{Exploratory time series analysis}
+\subsection{Decomposition}
+The regional series was decomposed with STL [14] (seasonal–trend decomposition using loess, 52-week period, robust version) into a trend $T_t$, a seasonal component $S_t$ and a remainder $R_t$:
+\begin{equation}
+Y_t=T_t+S_t+R_t .
+\label{eq:stl}
+\end{equation}
+Trend and seasonal strength were measured as [23]:
+\begin{equation}
+F_T=\max\!\left(0,\,1-\frac{\operatorname{Var}(R_t)}{\operatorname{Var}(T_t+R_t)}\right),\qquad F_S=\max\!\left(0,\,1-\frac{\operatorname{Var}(R_t)}{\operatorname{Var}(S_t+R_t)}\right).
+\label{eq:force}
+\end{equation}
+
+\subsection{Seasonal indices}
+To quantify monthly seasonality, cases were divided by their 52-week centred moving average, averaged by month $m$ and normalised to a mean of 1, following an approach similar to Shashvat et al. [7]:
+\begin{equation}
+\tilde{Y}_t=\frac{Y_t}{\frac{1}{52}\sum_{j=-26}^{25}Y_{t+j}},\qquad I_m=\frac{\overline{\tilde{Y}}_{m}}{\frac{1}{12}\sum_{m'=1}^{12}\overline{\tilde{Y}}_{m'}} .
+\label{eq:indice}
+\end{equation}
+An index $I_m>1$ indicates a month above trend.
+
+\subsection{Stationarity}
+Stationarity was assessed with two tests with opposite null hypotheses. The augmented Dickey–Fuller (ADF) test [15] estimates the regression
+\begin{equation}
+\Delta Y_t=\alpha+\gamma\,Y_{t-1}+\sum_{i=1}^{p}\delta_i\,\Delta Y_{t-i}+\varepsilon_t ,
+\label{eq:adf}
+\end{equation}
+and tests $H_0:\gamma=0$ (unit root, non-stationarity). The KPSS test [16] decomposes the series into a random walk and a stationary term and tests $H_0$: stationarity, using the statistic
+\begin{equation}
+\eta=\frac{1}{n^{2}\,\hat{\sigma}^{2}_{\infty}}\sum_{t=1}^{n}\Big(\sum_{s=1}^{t}\hat{e}_s\Big)^{2},
+\label{eq:kpss}
+\end{equation}
+where $\hat{e}_s$ are the residuals of the regression on a constant and $\hat{\sigma}^{2}_{\infty}$ is the long-run variance. A series is deemed stationary when ADF rejects $H_0$ and KPSS does not. Tests were applied to the series in level, in logarithm, in first difference and in seasonal difference, and to each district.
+
+\subsection{Autocorrelation}
+Autocorrelation (ACF) and partial autocorrelation (PACF) functions were examined up to 60 and 30 weeks. The absence of autocorrelation (in data or model residuals) was tested with the Ljung–Box statistic [17]:
+\begin{equation}
+Q(m)=n(n+2)\sum_{k=1}^{m}\frac{\hat{\rho}_k^{2}}{n-k}\;\sim\;\chi^{2}_{m} .
+\label{eq:lb}
+\end{equation}
+
+\section{Mathematical framework}
+\subsection{Starting point: a transmission model with an environmental reservoir}
+We start from the model of Tilahun et al. [5], used by Sabir et al. [6]. The population is divided into susceptible $S$, asymptomatic carriers $C$, infected $I$ and recovered $R$; $B$ is the concentration of bacteria in water and food:
+\begin{equation}
+\begin{aligned}
+\frac{dS}{dt}&=\Lambda-(\lambda+\mu)S+\delta R, &\qquad \frac{dC}{dt}&=\rho\lambda S-(\phi+\theta+\mu+\sigma_1)C,\\
+\frac{dI}{dt}&=(1-\rho)\lambda S+\theta C-(\alpha+\sigma_2+\mu+\beta)I, & \frac{dR}{dt}&=\phi C+\beta I-(\mu+\delta)R,\\
+\frac{dB}{dt}&=\sigma_1 C+\sigma_2 I-\mu_b B .
+\end{aligned}
+\label{eq:seir}
+\end{equation}
+$\Lambda$ is recruitment, $\mu$ natural mortality, $\rho$ the proportion of infections becoming carriers, $\theta$ progression from carriage to disease, $\phi$ and $\beta$ recovery rates, $\delta$ loss of immunity, $\alpha$ disease-induced mortality, $\sigma_1$ and $\sigma_2$ bacterial shedding and $\mu_b$ bacterial decay. The force of infection saturates:
+\begin{equation}
+\lambda(t)=\frac{\nu\,B(t)}{K+B(t)} ,
+\label{eq:lambda}
+\end{equation}
+where $\nu$ is the maximum contact rate with contaminated water or food and $K$ the half-saturation concentration.
+
+\subsection{Introducing rainfall}
+Model~\eqref{eq:seir} contains no climate. As a working hypothesis, we assume that rainfall $P(t)$ increases environmental contamination, through runoff and contamination of wells and water points, with intensity $\kappa\ge0$:
+\begin{equation}
+\frac{dB}{dt}=\sigma_1 C+\sigma_2 I+\kappa P(t)-\mu_b B,
+\qquad
+B(t)=\int_0^{\infty}e^{-\mu_b s}\big[\sigma_1C(t-s)+\sigma_2I(t-s)+\kappa P(t-s)\big]\,ds .
+\label{eq:pluie}
+\end{equation}
+Bacterial concentration thus integrates all past rainfall, with a memory of mean duration $1/\mu_b$.
+
+\subsection{From infections to reported cases}
+An infection becomes a reported case only after incubation (about 6–30 days [6]), consultation and reporting. With $g(s)$ the distribution of this total delay and $\pi_t$ the proportion of cases captured by surveillance, which increases with the number $N_t$ of reporting facilities:
+\begin{equation}
+\mathbb{E}[y_t]=\pi_t\int_0^{\infty}g(s)\big[(1-\rho)\lambda(t-s)S(t-s)+\theta C(t-s)\big]\,ds,\qquad \pi_t=\pi(N_t),\;\pi'(N)>0 .
+\label{eq:obs}
+\end{equation}
+
+\subsection{Qualitative predictions}
+Equations~\eqref{eq:lambda}–\eqref{eq:obs} lead to three predictions. (i) \textit{A lag between rainfall and cases}: rainfall acts through the reservoir memory ($1/\mu_b$) and then the delay $g$, so the case peak follows the rainfall peak by several weeks. (ii) \textit{A saturating effect}: the sensitivity $\partial\lambda/\partial B=\nu K/(K+B)^2$ tends to zero when $B\gg K$, so extra rainfall may no longer increase risk during the rainy season. (iii) \textit{Surveillance-driven trends}: an increase in $\pi_t$ raises reported cases without any change in true incidence. The parameters ($\nu$, $K$, $\kappa$, $\mu_b$, $g$) are not known locally and $S$, $C$, $B$ are unobserved: the model is therefore not fitted but used to derive hypotheses tested statistically.
+
+\section{Forecasting problem and hypotheses}\label{sec:hyp}
+Let $\mathcal{F}_t$ be the information available at the end of week $t$. Since accuracy is measured by absolute error, the optimal $h$-week-ahead forecast is the conditional median:
+\begin{equation}
+f_h^{*}=\arg\min_f\;\mathbb{E}\big|y_{t+h}-f(\mathcal{F}_t)\big|=\operatorname{med}\big(y_{t+h}\mid\mathcal{F}_t\big).
+\label{eq:objectif}
+\end{equation}
+With $\tilde{Y}_t$ defined in~\eqref{eq:indice}, $P^{(4)}_t=\sum_{j=0}^{3}P_{t-j}$ the 4-week rainfall total and $A_t=P^{(4)}_t-\overline{P^{(4)}}_{w(t)}$ its anomaly relative to the same calendar week $w(t)$, the hypotheses are:
+\begin{align}
+\textbf{H1:}&\quad r(\ell)=\operatorname{corr}\big(\tilde{Y}_t,P^{(4)}_{t-\ell}\big)>0,\ \text{maximal for a lag }\ell^{*}>0 ; \label{eq:h1}\\
+\textbf{H2:}&\quad \operatorname{corr}\big(\tilde{Y}_t,A_{t-\ell^{*}}\big)>0 ; \label{eq:h2}\\
+\textbf{H3:}&\quad \mathbb{E}\big|y_{t+h}-\hat{f}_h(\mathcal{F}_t,\mathbf{z}_t)\big|<\mathbb{E}\big|y_{t+h}-\hat{f}_h(\mathcal{F}_t)\big| ; \label{eq:h3}\\
+\textbf{H4:}&\quad \mathbb{E}\big|e^{\text{global}}_{d,t+h}\big|<\mathbb{E}\big|e^{\text{naive}}_{d,t+h}\big|\ \text{and}\ \mathbb{E}\big|e^{\text{global}}_{d,t+h}\big|<\mathbb{E}\big|e^{\text{local}}_{d,t+h}\big| , \label{eq:h4}
+\end{align}
+where $\mathbf{z}_t$ denotes climate variables observed up to week $t$. If the conditional median of $y_{t+h}$ is unchanged when $\mathbf{z}_t$ is added, all useful climate information is already contained in $\mathcal{F}_t$ and H3 is rejected.
+
+\section{Forecasting models}
+\textbf{Naive benchmarks.}
+\begin{equation}
+\hat{y}^{\,\text{naive}}_{t+h|t}=y_t,\qquad \hat{y}^{\,\text{seasonal}}_{t+h|t}=y_{t+h-52}.
+\label{eq:naif}
+\end{equation}
+\textbf{ARIMA} [18]. With $L$ the lag operator and $\varepsilon_t$ white noise,
+\begin{equation}
+\Big(1-\sum_{i=1}^{p}\phi_iL^{i}\Big)(1-L)^{d}\,y_t=c+\Big(1+\sum_{j=1}^{q}\theta_jL^{j}\Big)\varepsilon_t .
+\label{eq:arima}
+\end{equation}
+The order $d$ was chosen with the KPSS test, and $p$ and $q$ (0 to 3) by the Akaike information criterion on the initial training period, then fixed.
+
+\textbf{Prophet} [19]. Piecewise linear trend $g(t)$ and annual Fourier seasonality of order 10, with period $P=52.18$ weeks:
+\begin{equation}
+y(t)=g(t)+\sum_{k=1}^{10}\Big[a_k\cos\frac{2\pi kt}{P}+b_k\sin\frac{2\pi kt}{P}\Big]+\varepsilon_t .
+\label{eq:prophet}
+\end{equation}
+\textbf{XGBoost} [20]. The forecast is the sum of $M$ regression trees built sequentially; each tree minimises a squared loss penalised by its complexity ($T$ leaves with values $w$):
+\begin{equation}
+\hat{y}=\sum_{m=1}^{M}f_m(\mathbf{x}),\qquad \mathcal{L}=\sum_i(y_i-\hat{y}_i)^2+\sum_{m=1}^{M}\Big(\gamma T_m+\tfrac{1}{2}\lambda_r\lVert w_m\rVert^2\Big).
+\label{eq:xgb}
+\end{equation}
+Given non-stationarity in level (see main article), we used a direct strategy that forecasts the \textit{change} in the series, with one model $F_h$ per horizon:
+\begin{equation}
+\hat{y}_{t+h|t}=y_t+F_h(\mathbf{x}_t),\qquad \mathbf{x}_t=\Big(y_t,\dots,y_{t-3},\ \bar{y}^{(4)}_t,\ \bar{y}^{(13)}_t,\ \sin\tfrac{2\pi w_{t+h}}{52},\ \cos\tfrac{2\pi w_{t+h}}{52},\ y_{t+h-52}\Big).
+\label{eq:direct}
+\end{equation}
+The \textbf{XGBoost + climate} model adds $\mathbf{z}_t=\big(P^{(4)}_t,\,P^{(4)}_{t-4},\,\bar{T}^{(4)}_t,\,\bar{H}^{(4)}_t\big)$, all observed at the forecast date.
+
+\textbf{Local and global models.} The local model fits one function $F_{h,d}$ per district. The global model fits a single function $F_h$ on all 32 districts, on the log scale, with the past mean level of the district $\bar{u}_{d,t}$:
+\begin{equation}
+u_{d,t+h}-u_{d,t}=F_h\big(\mathbf{x}_{d,t},\bar{u}_{d,t}\big)+\varepsilon_{d,t+h},\qquad \hat{y}_{d,t+h|t}=\exp\big(u_{d,t}+\hat{F}_h\big)-1 .
+\label{eq:global}
+\end{equation}
+Hyperparameters were set a priori and never tuned on the test period.
+
+
+
+\section{Evaluation protocol}
+Forecasts were evaluated out of sample with a rolling origin and an expanding training window [23]. The test period covers 2023–2025 (156 weeks), chosen because the surveillance network was stable. For each week $t$ of this period, each model was retrained on weeks $1,\dots,t$ only and then forecast cases at $h=1$ and $h=4$ weeks. With $e_{t+h}=y_{t+h}-\hat{y}_{t+h|t}$:
+\begin{equation}
+\text{MAE}=\frac{1}{n}\sum|e_{t+h}|,\quad \text{RMSE}=\sqrt{\frac{1}{n}\sum e_{t+h}^2},\quad \text{MAPE}=\frac{100}{n}\sum\frac{|e_{t+h}|}{y_{t+h}},\quad \text{MAE}^{\text{rel}}_d=\frac{\text{MAE}^{\text{model}}_d}{\text{MAE}^{\text{naive}}_d}.
+\label{eq:metrics}
+\end{equation}
+MAE is the primary criterion, as it is less sensitive to extreme values than RMSE [24].
+
+\section{Statistical tests}
+To compare two models A and B, we compute $d_t=|e^{A}_t|-|e^{B}_t|$, its mean $\bar{d}$ and its autocovariances $\gamma_k$. The Diebold–Mariano statistic [25], with the small-sample correction of Harvey, Leybourne and Newbold [26], is compared with a Student distribution with $n-1$ degrees of freedom:
+\begin{equation}
+\mathrm{DM}=\frac{\bar{d}}{\sqrt{\frac{1}{n}\big(\gamma_0+2\sum_{k=1}^{h-1}\gamma_k\big)}},\qquad \mathrm{DM}^{*}=\mathrm{DM}\sqrt{\frac{n+1-2h+h(h-1)/n}{n}}\;\sim\;t_{n-1}.
+\label{eq:dm}
+\end{equation}
+Across districts, the error difference is normalised by each district's naive MAE and averaged each week over the $D_t$ observed districts; test~\eqref{eq:dm} is applied to this series:
+\begin{equation}
+\tilde{d}_t=\frac{1}{D_t}\sum_{d}\frac{|e^{A}_{d,t}|-|e^{B}_{d,t}|}{\text{MAE}^{\text{naive}}_d}.
+\label{eq:panel}
+\end{equation}
+Correlations~\eqref{eq:h1} and~\eqref{eq:h2} are Pearson correlations; associations between district characteristics were tested with Spearman correlation. The significance level is 5\%.
+
+
+\end{document}
